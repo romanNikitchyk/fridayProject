@@ -1,0 +1,21 @@
+.default {
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 2px solid #0D68F9;
+    transition: all 0.3s ease-in-out 0s;
+
+    font-size: 18px;
+}
+
+.default:hover, .default:focus {
+    border-color: #003299;
+    outline: none;
+}
+
+.errorDefault {
+    position: absolute;
+
+    color: #B91C1C;
+    font-size: 18px;
+    font-weight: 500;
+}
