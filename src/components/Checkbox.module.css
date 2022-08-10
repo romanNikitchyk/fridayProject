@@ -1,0 +1,48 @@
+.default {
+    padding-left: 30px;
+}
+
+.input {
+    appearance: none;
+}
+
+.checkbox {
+    margin-left: -30px;
+    margin-top: -1px;
+
+    position: absolute;
+    width: 20px;
+    height: 20px;
+
+    background-color: #fff;
+    background-position: 50%;
+    border: 2px solid #0D68F9;
+    border-radius: 4px;
+    transition: all 0.3s ease 0s;
+}
+
+.input:checked + .checkbox {
+    border-color: #0D68F9;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 10 9'%3E%3Cpath fill='%230D68F9' d='M1.464 2.408L5.707 6.65 4.293 8.065.05 3.822l1.414-1.414z'/%3E%3Cpath fill='%230D68F9' d='M8.535.993L9.95 2.408 4.293 8.065 2.879 6.65 8.535.993z'/%3E%3C/svg%3E") 50% / 11px 10px no-repeat;
+}
+
+.input:disabled + .checkbox {
+    opacity: 0.4;
+}
+
+.input:hover + .checkbox {
+    border-color: #003299;
+}
+
+.input:checked:hover + .checkbox {
+    border-color: #003299;
+}
+
+.input:focus-visible + .checkbox {
+    outline: 1px solid #000;
+}
+
+.title {
+    font-size: 18px;
+}
+
