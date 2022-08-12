@@ -1,0 +1,117 @@
+.range {
+    width: 250px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    outline: none;
+    height: 15px;
+}
+
+/* ***** track ***** */
+
+.range::-webkit-slider-runnable-track {
+    border-radius: 15px;
+    height: 100%;
+    border: 2px solid #0D68F9;
+    background-color: #fff;
+
+    width: 100%;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.range::-moz-range-track {
+    border-radius: 15px;
+    height: 100%;
+    border: 2px solid #0D68F9;
+    background-color: #fff;
+
+    box-sizing: border-box;
+    width: 100%;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+/* ***** thumb ***** */
+
+.range::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+
+    background: #0D68F9;
+    border-radius: 50%;
+
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -4px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+
+    background: #0D68F9;
+    border-radius: 50%;
+
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+/* ***** hover ***** */
+
+.range:hover::-moz-range-track {
+    border-color: #003299;
+}
+
+.range:hover::-webkit-slider-runnable-track {
+    border-color: #003299;
+}
+
+.range::-webkit-slider-thumb:hover {
+    background: #003299;
+}
+
+.range::-moz-range-thumb:hover {
+    background: #003299;
+}
+
+/* ***** disabled ***** */
+
+.range:disabled::-moz-range-track {
+    border-color: #C3DAFE;
+}
+
+.range:disabled::-moz-range-thumb {
+    background: #C3DAFE;
+}
+
+.range:disabled::-webkit-slider-runnable-track {
+    border-color: #C3DAFE;
+}
+
+.range:disabled::-webkit-slider-thumb {
+    background: #C3DAFE;
+}
+
+/* ***** focus ***** */
+
+.range:focus-visible::-moz-range-track {
+    border-color: #003299;
+}
+
+.range:focus-visible::-moz-range-thumb {
+    background: #003299;
+}
+
+.range:focus-visible::-webkit-slider-runnable-track {
+    border-color: #003299;
+}
+
+.range:focus-visible::-webkit-slider-thumb {
+    background: #003299;
+}
+
+
+
+
