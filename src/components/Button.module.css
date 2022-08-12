@@ -15,3 +15,7 @@
 .default:hover {
     background: #003299;
 }
+
+.default:disabled {
+    background: #C3DAFE;
+}

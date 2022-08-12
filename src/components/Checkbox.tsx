@@ -1,4 +1,4 @@
-import React, {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes} from 'react';
+import React, {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes} from 'react'
 import s from './Checkbox.module.css'
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -35,8 +35,8 @@ const Checkbox: FC<PropsType> = (
             <span className={s.checkbox}></span>
             {children && <span className={s.title}>{children}</span>}
         </label>
-    );
-};
+    )
+}
 
 
-export default Checkbox;
+export default Checkbox

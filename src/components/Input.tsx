@@ -1,4 +1,4 @@
-import React, {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, KeyboardEvent} from 'react';
+import React, {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, KeyboardEvent} from 'react'
 import s from './Input.module.css'
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -50,7 +50,7 @@ const Input: FC<PropsType> = (
                 </div>
             }
         </>
-    );
-};
+    )
+}
 
-export default Input;
+export default Input

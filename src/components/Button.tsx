@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes, DetailedHTMLProps, FC} from 'react';
+import React, {ButtonHTMLAttributes, DetailedHTMLProps, FC} from 'react'
 import s from './Button.module.css'
 
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
@@ -17,6 +17,6 @@ const Button: FC<PropsType> = (
             {...restProps}
         />
     )
-};
+}
 
-export default Button;
+export default Button

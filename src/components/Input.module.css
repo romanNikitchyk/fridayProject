@@ -12,6 +12,22 @@
     outline: none;
 }
 
+.default::placeholder {
+    color: #a0a0a0;
+}
+
+.default:disabled {
+    opacity: 0.3;
+    background-color: #C3DAFE;
+    color: #003299;
+}
+
+.default:disabled::placeholder {
+    color: #0D68F9;
+}
+
+
+
 .errorDefault {
     position: absolute;
 

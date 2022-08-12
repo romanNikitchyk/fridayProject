@@ -1,24 +1,29 @@
 .default {
-    padding-left: 30px;
-}
-
-.input {
-    appearance: none;
+    box-sizing: border-box;
+    padding-left: 25px;
+    cursor: pointer;
+    position: relative;
 }
 
 .checkbox {
-    margin-left: -30px;
-    margin-top: -1px;
+    box-sizing: border-box;
 
     position: absolute;
-    width: 20px;
-    height: 20px;
+    top: -2px;
+    left: 0;
+
+    width: 25px;
+    height: 25px;
 
     background-color: #fff;
     background-position: 50%;
     border: 2px solid #0D68F9;
     border-radius: 4px;
     transition: all 0.3s ease 0s;
+}
+
+.input {
+    appearance: none;
 }
 
 .input:checked + .checkbox {
