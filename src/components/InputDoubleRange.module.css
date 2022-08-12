@@ -1,0 +1,96 @@
+.slider {
+    position: relative;
+
+    margin: 20px;
+    max-width: 300px;
+
+
+    height: 15px;
+    background-color: #fff;
+    border: 2px solid #0D68F9;
+    box-sizing: border-box;
+    border-radius: 15px;
+
+    transition: all 0.3s ease-in-out 0s;
+}
+
+
+.slider .progress {
+    height: 100%;
+    border-radius: 15px;
+    background-color: #C3DAFE;
+
+    position: absolute;
+}
+
+.rangeInput input {
+    position: absolute;
+    top: -4px;
+    left: -2px;
+    height: 15px;
+    width: 100%;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    pointer-events: none;
+}
+
+/* ***** thumb ***** */
+
+.rangeInput input::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+
+    background: #0D68F9;
+    border-radius: 50%;
+
+    cursor: pointer;
+    -webkit-appearance: none;
+    pointer-events: auto;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.rangeInput input::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+
+    background: #0D68F9;
+    border-radius: 50%;
+
+    cursor: pointer;
+    appearance: none;
+    pointer-events: auto;
+    border: none;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+/* ***** hover ***** */
+
+.slider:hover {
+    border-color: #003299;
+}
+
+.slider:hover {
+    border-color: #003299;
+}
+
+.rangeInput input::-webkit-slider-thumb:hover {
+    background: #003299;
+}
+
+.rangeInput input::-moz-range-thumb:hover {
+    background: #003299;
+}
+
+
+/* ***** disabled ***** */
+
+.rangeInput input:disabled::-webkit-slider-thumb {
+    background-color: #C3DAFE;
+}
+
+.rangeInput input:disabled::-moz-range-thumb {
+    background-color: #C3DAFE;
+}
