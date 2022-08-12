@@ -1,0 +1,55 @@
+.default {
+    position: relative;
+}
+.default select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+
+    padding: 15px 30px 15px 20px;
+    border-radius: 8px;
+    border: 2px solid #0D68F9;
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: all 0.3s ease-in-out 0s;
+}
+.default::after {
+    content: '';
+
+    box-sizing: border-box;
+    pointer-events: none;
+
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -20%);
+    z-index: 1;
+
+    border-top: 10px solid #0D68F9;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.default:hover select {
+    border-color: #003299;
+}
+.default:hover::after {
+    border-top-color: #003299;
+}
+
+.default select:disabled {
+    opacity: 0.3;
+    background-color: #C3DAFE;
+    color: #003299;
+}
+
+.default select:focus {
+    border-color: #003299;
+    outline: none;
+}
+
