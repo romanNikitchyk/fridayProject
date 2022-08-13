@@ -10,26 +10,29 @@ import {Recovery} from './pages/Recovery';
 import {NewPass} from './pages/NewPass';
 import {NotFound} from './pages/NotFound';
 import {Test} from './pages/Test';
+import {TestHeader} from './TestHeader';
 
 
 function App() {
-  return (
-    <div className="App">
-        <Routes>
-            <Route path={'/'} element={<Main/>}/>
+    return (
+        <div className="App">
+            <TestHeader/>
 
-            <Route path={'/login'} element={<Login/>}/>
-            <Route path={'/register'} element={<Register/>}/>
-            <Route path={'/profile'} element={<Profile/>}/>
+            <Routes>
+                <Route path={'/'} element={<Main/>}/>
 
-            <Route path={'/recovery'} element={<Recovery/>}/>
-            <Route path={'/new-pass'} element={<NewPass/>}/>
+                <Route path={'/login'} element={<Login/>}/>
+                <Route path={'/register'} element={<Register/>}/>
+                <Route path={'/profile'} element={<Profile/>}/>
 
-            <Route path={'/*'} element={<NotFound/>}/>
-            <Route path={'/test'} element={<Test/>}/>
-        </Routes>
-    </div>
-  );
+                <Route path={'/recovery'} element={<Recovery/>}/>
+                <Route path={'/new-pass'} element={<NewPass/>}/>
+
+                <Route path={'/*'} element={<NotFound/>}/>
+                <Route path={'/test'} element={<Test/>}/>
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
