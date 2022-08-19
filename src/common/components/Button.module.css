@@ -1,21 +1,23 @@
 .default {
-    padding: 20px 25px;
-    background: #0D68F9;
-    border-radius: 8px;
-    border: none;
+  cursor: pointer;
 
-    font-size: 18px;
-    letter-spacing: 2px;
-    color: #FFFFFF;
+  padding: 20px 25px;
 
-    cursor: pointer;
-    transition: all 0.3s ease-in-out 0s;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 2px;
+
+  background: #0d68f9;
+  border: none;
+  border-radius: 8px;
+
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .default:hover {
-    background: #003299;
+  background: #003299;
 }
 
 .default:disabled {
-    background: #C3DAFE;
+  background: #c3dafe;
 }

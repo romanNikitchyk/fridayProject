@@ -1,70 +1,75 @@
 .default {
-    box-sizing: border-box;
-    padding-left: 26px;
-    cursor: pointer;
-    position: relative;
+  cursor: pointer;
+
+  position: relative;
+
+  box-sizing: border-box;
+  padding-left: 26px;
 }
 
 .radio {
-    box-sizing: border-box;
+  position: absolute;
+  top: -2px;
+  left: 0;
 
-    position: absolute;
-    top: -2px;
-    left: 0;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
 
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #0d68f9;
+  border-radius: 50%;
 
-    background-color: #fff;
-    border: 2px solid #0D68F9;
-    transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .input {
-    appearance: none;
+  appearance: none;
 }
 
 .input:checked + .radio {
-    border-color: #0D68F9;
+  border-color: #0d68f9;
 }
 
 .input:checked + .radio::before {
-    content: '';
-    width: 75%;
-    height: 75%;
+  content: '';
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #0D68F9;
-    border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    transition: all 0.3s ease-in-out 0s;
+  width: 75%;
+  height: 75%;
+
+  background-color: #0d68f9;
+  border-radius: 50%;
+
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .input:disabled + .radio {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .input:hover + .radio {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .input:hover + .radio::before {
-    background-color: #003299;
+  background-color: #003299;
 }
 
 .input:checked:hover + .radio {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .input:focus-visible + .radio {
-    outline: 1px solid #000;
+  outline: 1px solid #000;
 }
 
 .title {
-    font-size: 18px;
-    margin-right: 30px;
+  margin-right: 30px;
+
+  font-size: 18px;
 }

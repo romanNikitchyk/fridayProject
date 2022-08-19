@@ -1,37 +1,39 @@
 .default {
-    padding: 15px 20px;
-    border-radius: 8px;
-    border: 2px solid #0D68F9;
-    transition: all 0.3s ease-in-out 0s;
+  padding: 15px 20px;
 
-    font-size: 18px;
+  font-size: 18px;
+
+  border: 2px solid #0d68f9;
+  border-radius: 8px;
+
+  transition: all 0.3s ease-in-out 0s;
 }
 
-.default:hover, .default:focus {
-    border-color: #003299;
-    outline: none;
+.default:hover,
+.default:focus {
+  border-color: #003299;
+  outline: none;
 }
 
 .default::placeholder {
-    color: #a0a0a0;
+  color: #a0a0a0;
 }
 
 .default:disabled {
-    opacity: 0.3;
-    background-color: #C3DAFE;
-    color: #003299;
+  color: #003299;
+
+  opacity: 0.3;
+  background-color: #c3dafe;
 }
 
 .default:disabled::placeholder {
-    color: #0D68F9;
+  color: #0d68f9;
 }
 
-
-
 .errorDefault {
-    position: absolute;
+  position: absolute;
 
-    color: #B91C1C;
-    font-size: 18px;
-    font-weight: 500;
+  font-size: 18px;
+  font-weight: 500;
+  color: #b91c1c;
 }

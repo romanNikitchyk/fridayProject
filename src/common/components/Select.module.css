@@ -1,55 +1,57 @@
 .default {
-    position: relative;
+  position: relative;
 }
 .default select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #fff;
+  cursor: pointer;
 
-    padding: 15px 30px 15px 20px;
-    border-radius: 8px;
-    border: 2px solid #0D68F9;
-    cursor: pointer;
+  padding: 15px 30px 15px 20px;
 
-    font-size: 18px;
+  font-size: 18px;
 
-    transition: all 0.3s ease-in-out 0s;
+  background-color: #fff;
+  border: 2px solid #0d68f9;
+  border-radius: 8px;
+
+  transition: all 0.3s ease-in-out 0s;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .default::after {
-    content: '';
+  pointer-events: none;
+  content: '';
 
-    box-sizing: border-box;
-    pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -20%);
 
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translate(0, -20%);
-    z-index: 1;
+  box-sizing: border-box;
 
-    border-top: 10px solid #0D68F9;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
+  border-top: 10px solid #0d68f9;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
 
-    transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .default:hover select {
-    border-color: #003299;
+  border-color: #003299;
 }
 .default:hover::after {
-    border-top-color: #003299;
+  border-top-color: #003299;
 }
 
 .default select:disabled {
-    opacity: 0.3;
-    background-color: #C3DAFE;
-    color: #003299;
+  color: #003299;
+
+  opacity: 0.3;
+  background-color: #c3dafe;
 }
 
 .default select:focus {
-    border-color: #003299;
-    outline: none;
+  border-color: #003299;
+  outline: none;
 }
-

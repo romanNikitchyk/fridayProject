@@ -1,117 +1,119 @@
 .range {
-    width: 250px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+  width: 250px;
+  height: 15px;
 
-    outline: none;
-    height: 15px;
+  outline: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* ***** track ***** */
 
 .range::-webkit-slider-runnable-track {
-    border-radius: 15px;
-    height: 100%;
-    border: 2px solid #0D68F9;
-    background-color: #fff;
+  width: 100%;
+  height: 100%;
 
-    width: 100%;
-    transition: all 0.3s ease-in-out 0s;
+  background-color: #fff;
+  border: 2px solid #0d68f9;
+  border-radius: 15px;
+
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .range::-moz-range-track {
-    border-radius: 15px;
-    height: 100%;
-    border: 2px solid #0D68F9;
-    background-color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 
-    box-sizing: border-box;
-    width: 100%;
-    transition: all 0.3s ease-in-out 0s;
+  background-color: #fff;
+  border: 2px solid #0d68f9;
+  border-radius: 15px;
+
+  transition: all 0.3s ease-in-out 0s;
 }
 
 /* ***** thumb ***** */
 
 .range::-webkit-slider-thumb {
-    width: 20px;
-    height: 20px;
+  cursor: pointer;
 
-    background: #0D68F9;
-    border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -4px;
 
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -4px;
-    transition: all 0.3s ease-in-out 0s;
+  background: #0d68f9;
+  border-radius: 50%;
+
+  transition: all 0.3s ease-in-out 0s;
+
+  -webkit-appearance: none;
 }
 
 .range::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+  cursor: pointer;
 
-    background: #0D68F9;
-    border-radius: 50%;
+  width: 20px;
+  height: 20px;
 
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease-in-out 0s;
+  background: #0d68f9;
+  border: none;
+  border-radius: 50%;
+
+  transition: all 0.3s ease-in-out 0s;
 }
 
 /* ***** hover ***** */
 
 .range:hover::-moz-range-track {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .range:hover::-webkit-slider-runnable-track {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .range::-webkit-slider-thumb:hover {
-    background: #003299;
+  background: #003299;
 }
 
 .range::-moz-range-thumb:hover {
-    background: #003299;
+  background: #003299;
 }
 
 /* ***** disabled ***** */
 
 .range:disabled::-moz-range-track {
-    border-color: #C3DAFE;
+  border-color: #c3dafe;
 }
 
 .range:disabled::-moz-range-thumb {
-    background: #C3DAFE;
+  background: #c3dafe;
 }
 
 .range:disabled::-webkit-slider-runnable-track {
-    border-color: #C3DAFE;
+  border-color: #c3dafe;
 }
 
 .range:disabled::-webkit-slider-thumb {
-    background: #C3DAFE;
+  background: #c3dafe;
 }
 
 /* ***** focus ***** */
 
 .range:focus-visible::-moz-range-track {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .range:focus-visible::-moz-range-thumb {
-    background: #003299;
+  background: #003299;
 }
 
 .range:focus-visible::-webkit-slider-runnable-track {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .range:focus-visible::-webkit-slider-thumb {
-    background: #003299;
+  background: #003299;
 }
-
-
-
-

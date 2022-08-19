@@ -1,96 +1,101 @@
 .slider {
-    position: relative;
+  position: relative;
 
-    margin: 20px;
-    max-width: 300px;
+  box-sizing: border-box;
+  max-width: 300px;
+  height: 15px;
+  margin: 20px;
 
+  background-color: #fff;
+  border: 2px solid #0d68f9;
+  border-radius: 15px;
 
-    height: 15px;
-    background-color: #fff;
-    border: 2px solid #0D68F9;
-    box-sizing: border-box;
-    border-radius: 15px;
-
-    transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 
-
 .slider .progress {
-    height: 100%;
-    border-radius: 15px;
-    background-color: #C3DAFE;
+  position: absolute;
 
-    position: absolute;
+  height: 100%;
+
+  background-color: #c3dafe;
+  border-radius: 15px;
 }
 
 .rangeInput input {
-    position: absolute;
-    top: -4px;
-    left: -2px;
-    height: 15px;
-    width: 100%;
+  pointer-events: none;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: none;
-    pointer-events: none;
+  position: absolute;
+  top: -4px;
+  left: -2px;
+
+  width: 100%;
+  height: 15px;
+
+  background: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 /* ***** thumb ***** */
 
 .rangeInput input::-webkit-slider-thumb {
-    width: 20px;
-    height: 20px;
+  pointer-events: auto;
+  cursor: pointer;
 
-    background: #0D68F9;
-    border-radius: 50%;
+  width: 20px;
+  height: 20px;
 
-    cursor: pointer;
-    -webkit-appearance: none;
-    pointer-events: auto;
-    transition: all 0.3s ease-in-out 0s;
+  background: #0d68f9;
+  border-radius: 50%;
+
+  transition: all 0.3s ease-in-out 0s;
+
+  -webkit-appearance: none;
 }
 
 .rangeInput input::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+  pointer-events: auto;
+  cursor: pointer;
 
-    background: #0D68F9;
-    border-radius: 50%;
+  width: 20px;
+  height: 20px;
 
-    cursor: pointer;
-    appearance: none;
-    pointer-events: auto;
-    border: none;
-    transition: all 0.3s ease-in-out 0s;
+  background: #0d68f9;
+  border: none;
+  border-radius: 50%;
+
+  transition: all 0.3s ease-in-out 0s;
+
+  appearance: none;
 }
 
 /* ***** hover ***** */
 
 .slider:hover {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .slider:hover {
-    border-color: #003299;
+  border-color: #003299;
 }
 
 .rangeInput input::-webkit-slider-thumb:hover {
-    background: #003299;
+  background: #003299;
 }
 
 .rangeInput input::-moz-range-thumb:hover {
-    background: #003299;
+  background: #003299;
 }
-
 
 /* ***** disabled ***** */
 
 .rangeInput input:disabled::-webkit-slider-thumb {
-    background-color: #C3DAFE;
+  background-color: #c3dafe;
 }
 
 .rangeInput input:disabled::-moz-range-thumb {
-    background-color: #C3DAFE;
+  background-color: #c3dafe;
 }

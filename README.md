@@ -5,4 +5,3 @@
 ## Quick Link
 
 [Test Page](https://sssromaz.github.io/fridayProject/#/test)
-
