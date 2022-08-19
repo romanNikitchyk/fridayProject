@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import Checkbox from '../components/Checkbox';
-import EditableSpan from '../components/EditableSpan';
-import Select from '../components/Select';
-import Radio from '../components/Radio';
-import InputRange from '../components/InputRange';
-import InputDoubleRange from '../components/InputDoubleRange';
+import Button from '../common/components/Button';
+import Input from '../common/components/Input';
+import Checkbox from '../common/components/Checkbox';
+import EditableSpan from '../common/components/EditableSpan';
+import Select from '../common/components/Select';
+import Radio from '../common/components/Radio';
+import InputRange from '../common/components/InputRange';
+import InputDoubleRange from '../common/components/InputDoubleRange';
 
 
 export function Test() {

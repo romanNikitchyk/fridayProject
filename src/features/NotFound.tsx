@@ -13,13 +13,13 @@ const headingNotFound: CSSProperties = {
     color: '#fff',
     fontSize: '6rem',
     lineHeight: '200%',
-    textShadow: `0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #0fa,
-        0 0 82px #0fa,
-        0 0 92px #0fa,
-        0 0 102px #0fa`,
+    textShadow: `0 0 7px #0D68F9,
+        0 0 10px #0D68F9,
+        0 0 21px #0D68F9,
+        0 0 42px #0D68F9,
+        0 0 82px #0D68F9,
+        0 0 92px #0D68F9,
+        0 0 102px #0D68F9`,
 }
 
 export function NotFound() {

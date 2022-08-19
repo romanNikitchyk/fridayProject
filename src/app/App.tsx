@@ -1,23 +1,20 @@
 import React from 'react';
-import './App.css';
 import {Route, Routes} from 'react-router-dom';
 
-import {Main} from './pages/Main';
-import {Login} from './pages/Login';
-import {Register} from './pages/Register';
-import {Profile} from './pages/Profile';
-import {Recovery} from './pages/Recovery';
-import {NewPass} from './pages/NewPass';
-import {NotFound} from './pages/NotFound';
-import {Test} from './pages/Test';
-import {TestHeader} from './TestHeader';
+import {Main} from '../features/Main';
+import {Login} from '../features/auth/Login';
+import {Register} from '../features/auth/Register';
+import {Profile} from '../features/profile/Profile';
+import {Recovery} from '../features/auth/Recovery';
+import {NewPass} from '../features/auth/NewPass';
+import {NotFound} from '../features/NotFound';
+import {Test} from '../features/Test';
+import {TestHeader} from '../TestHeader';
 
 
 function App() {
     return (
         <div className="App">
-            <TestHeader/>
-
             <Routes>
                 <Route path={'/'} element={<Main/>}/>
 
@@ -31,6 +28,8 @@ function App() {
                 <Route path={'/*'} element={<NotFound/>}/>
                 <Route path={'/test'} element={<Test/>}/>
             </Routes>
+
+            <TestHeader/>
         </div>
     );
 }
