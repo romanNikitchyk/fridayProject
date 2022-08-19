@@ -1,8 +1,8 @@
 # Project
 
-[GitHub Pages](https://av-html.github.io/project)
+[GitHub Pages](https://sssromaz.github.io/fridayProject/)
 
 ## Quick Link
 
-[Test Page](https://av-html.github.io/project/#/test)
+[Test Page](https://sssromaz.github.io/fridayProject/#/test)
 
