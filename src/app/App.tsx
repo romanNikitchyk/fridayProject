@@ -2,12 +2,12 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { Main } from '../features/Main'
-import { Login } from '../features/auth/Login'
-import { Register } from '../features/auth/Register'
+import { Login } from '../features/auth/Login/Login'
+import { Register } from '../features/auth/Register/Register'
 import { Profile } from '../features/profile/Profile'
-import { Recovery } from '../features/auth/Recovery'
-import { NewPass } from '../features/auth/NewPass'
-import { NotFound } from '../features/NotFound'
+import { ForgotPassword } from '../features/auth/ForgotPassword/ForgotPassword'
+import { NewPassword } from '../features/auth/NewPassword/NewPassword'
+import { PageNotFound } from '../common/components/PageNotFound/PageNotFound'
 import { Test } from '../features/Test'
 import { TestHeader } from '../TestHeader'
 
@@ -21,10 +21,10 @@ function App() {
         <Route path={'/register'} element={<Register />} />
         <Route path={'/profile'} element={<Profile />} />
 
-        <Route path={'/recovery'} element={<Recovery />} />
-        <Route path={'/new-pass'} element={<NewPass />} />
+        <Route path={'/recovery'} element={<ForgotPassword />} />
+        <Route path={'/new-pass'} element={<NewPassword />} />
 
-        <Route path={'/*'} element={<NotFound />} />
+        <Route path={'/*'} element={<PageNotFound />} />
         <Route path={'/test'} element={<Test />} />
       </Routes>
 

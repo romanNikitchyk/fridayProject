@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react'
 import s from './EditableSpan.module.css'
-import Input from './Input'
+import Input from '../Input/Input'
 
 type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,

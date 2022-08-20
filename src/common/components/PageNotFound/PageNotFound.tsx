@@ -22,7 +22,7 @@ const headingNotFound: CSSProperties = {
         0 0 102px #0D68F9`,
 }
 
-export function NotFound() {
+export function PageNotFound() {
   return (
     <div style={styleNotFound}>
       <h2 style={headingNotFound}>
