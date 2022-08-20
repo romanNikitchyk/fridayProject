@@ -44,7 +44,7 @@ const Input: FC<PropsType> = ({
   return (
     <>
       <input
-        type={'text'}
+        type={type}
         onChange={onChangeHandler}
         onKeyDown={onKeyDownHandler}
         className={finalClassName}
