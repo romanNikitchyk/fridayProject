@@ -12,6 +12,7 @@ export function Login() {
     initialValues: {
       email: '',
       password: '',
+      rememberMe: false,
     },
     validate: (values) => {
       const errors: FormikErrorType = {}
@@ -42,6 +43,7 @@ export function Login() {
           <label htmlFor="email"></label>
 
           <Input id="email" type="email" {...formik.getFieldProps('email')} />
+
           {formik.touched.email && formik.errors.email ? (
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
           ) : null}
