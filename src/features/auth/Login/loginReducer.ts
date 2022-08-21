@@ -6,7 +6,7 @@ const initialState = {
 }
 type InitialStateType = typeof initialState
 
-export const authReducer = (
+export const loginReducer = (
   state: InitialStateType = initialState,
   action: ActionsType
 ): InitialStateType => {
