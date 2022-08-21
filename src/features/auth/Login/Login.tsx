@@ -17,13 +17,18 @@ export function Login() {
       const errors: FormikErrorType = {}
       if (!values.email) {
         errors.email = 'Required'
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+          values.email
+        )
+      ) {
         errors.email = 'Invalid email address'
       }
       if (!values.password) {
         errors.password = 'Required'
       } else if (values.password.length < 3) {
-        errors.password = 'Password should be at least 3 simbols'
+        errors.password =
+          'Password should be at least 3 simbols'
       }
       return errors
     },
@@ -37,29 +42,34 @@ export function Login() {
       <div className={stl.loginContainer}>
         <h3>It-incubator</h3>
         <h4>Sign IN</h4>
-        <form className={stl.loginForm} onSubmit={formik.handleSubmit}>
+        <form
+          className={stl.loginForm}
+          onSubmit={formik.handleSubmit}
+        >
           <label htmlFor="email"></label>
+
           <Input
             id="email"
-            name="email"
             type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
+            {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email ? (
-            <div style={{ color: 'red' }}>{formik.errors.email}</div>
+            <div style={{ color: 'red' }}>
+              {formik.errors.email}
+            </div>
           ) : null}
           <label htmlFor="password"></label>
           <Input
             id="password"
-            name="password"
             type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
+            {...formik.getFieldProps('password')}
           />
-          {formik.touched.password && formik.errors.password && (
-            <div style={{ color: 'red' }}>{formik.errors.password}</div>
-          )}
+          {formik.touched.password &&
+            formik.errors.password && (
+              <div style={{ color: 'red' }}>
+                {formik.errors.password}
+              </div>
+            )}
           <button type="submit">Submit</button>
         </form>
       </div>
