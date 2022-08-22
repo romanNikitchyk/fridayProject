@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loginTC } from './loginReducer'
 import { AppDispatch, RootState } from '../../../app/store'
 import { Navigate } from 'react-router-dom'
+import Button from '../../../common/components/Button/Button'
 type FormikErrorType = {
   email?: string
   password?: string
@@ -62,8 +63,13 @@ export function Login() {
           {formik.touched.password && formik.errors.password && (
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
-          <button type="submit">Submit</button>
+          <a className={stl.fogotLink}>Fogot Password?</a>
+          <Button type="submit" className={stl.loginButton}>
+            Login
+          </Button>
         </form>
+        <p>Don`t have an account?</p>
+        <a className={stl.signUpLink}>Sign Up</a>
       </div>
     </div>
   )

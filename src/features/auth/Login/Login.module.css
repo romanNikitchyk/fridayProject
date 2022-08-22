@@ -27,3 +27,15 @@
   align-items: center;
   justify-content: center;
 }
+.fogotLink {
+  margin-left: 250px;
+  padding: 20px;
+
+  text-align: right;
+}
+.loginButton {
+  padding: 20px;
+}
+.signUpLink {
+  padding: 20px;
+}
