@@ -2,12 +2,18 @@ import React from 'react'
 import stl from './Login.module.css'
 import { useFormik } from 'formik'
 import Input from '../../../common/components/Input/Input'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginTC } from './loginReducer'
+import { AppDispatch, RootState } from '../../../app/store'
+import { Navigate } from 'react-router-dom'
 type FormikErrorType = {
   email?: string
   password?: string
 }
 
 export function Login() {
+  const isLoggedIn = useSelector<RootState>((state) => state.login.isLoggedIn)
+  const dispatch = useDispatch<AppDispatch>()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -29,10 +35,14 @@ export function Login() {
       return errors
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
+      dispatch(loginTC(values))
       formik.resetForm()
     },
   })
+
+  if (isLoggedIn) {
+    return <Navigate to={'/profile'} />
+  }
   return (
     <div className={stl.wrapper}>
       <h2 className={stl.title}>Login Page</h2>

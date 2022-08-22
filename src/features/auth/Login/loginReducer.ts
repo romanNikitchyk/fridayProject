@@ -8,7 +8,7 @@ type InitialStateType = typeof initialState
 
 export const loginReducer = (
   state: InitialStateType = initialState,
-  action: ActionsType
+  action: LoginActionsType
 ): InitialStateType => {
   switch (action.type) {
     case 'login/SET-IS-LOGGED-IN':
@@ -22,11 +22,11 @@ export const setIsLoggedInAC = (value: boolean) =>
   ({ type: 'login/SET-IS-LOGGED-IN', value } as const)
 
 // thunks
-export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsType>) => {
+export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<LoginActionsType>) => {
   loginApi
     .login(data)
     .then((res) => {
-      alert(res)
+      console.log(res)
       dispatch(setIsLoggedInAC(true))
     })
 
@@ -36,4 +36,4 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<ActionsTyp
 }
 
 // types
-type ActionsType = ReturnType<typeof setIsLoggedInAC>
+export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
