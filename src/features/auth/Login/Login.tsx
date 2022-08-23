@@ -2,19 +2,19 @@ import React from 'react'
 import stl from './Login.module.css'
 import { useFormik } from 'formik'
 import Input from '../../../common/components/Input/Input'
-import { useDispatch, useSelector } from 'react-redux'
 import { loginTC } from './loginReducer'
-import { AppDispatch, RootState } from '../../../app/store'
 import { Link, Navigate } from 'react-router-dom'
 import Button from '../../../common/components/Button/Button'
+import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
+
 type FormikErrorType = {
   email?: string
   password?: string
 }
 
 export function Login() {
-  const isLoggedIn = useSelector<RootState>((state) => state.login.isLoggedIn)
-  const dispatch = useDispatch<AppDispatch>()
+  const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
+  const dispatch = useAppDispatch()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -30,8 +30,8 @@ export function Login() {
       }
       if (!values.password) {
         errors.password = 'Required'
-      } else if (values.password.length < 3) {
-        errors.password = 'Password should be at least 3 simbols'
+      } else if (!/^[A-Z0-9._%+-]{8,32}$/i.test(values.password)) {
+        errors.password = 'Password must be more than 7 characters!'
       }
       return errors
     },
@@ -44,6 +44,7 @@ export function Login() {
   if (isLoggedIn) {
     return <Navigate to={'/profile'} />
   }
+
   return (
     <div className={stl.wrapper}>
       <h2 className={stl.title}>Login Page</h2>
@@ -55,16 +56,16 @@ export function Login() {
 
           <Input id="email" type="email" {...formik.getFieldProps('email')} />
 
-          {formik.touched.email && formik.errors.email ? (
+          {formik.touched.email && formik.errors.email && (
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
-          ) : null}
+          )}
           <label htmlFor="password"></label>
           <Input id="password" type="password" {...formik.getFieldProps('password')} />
           {formik.touched.password && formik.errors.password && (
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
-          <a className={stl.fogotLink}>Fogot Password?</a>
-          <Button type="submit" className={stl.loginButton} name={'Login'}></Button>
+          <a className={stl.forgotLink}>Forgot Password?</a>
+          <Button type="submit" className={stl.loginButton} name={'Login'} />
         </form>
         <p>Don`t have an account?</p>
         <Link to={'/register'}>Sign Up</Link>
