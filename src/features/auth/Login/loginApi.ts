@@ -9,12 +9,12 @@ export type ResponseType = {
   _id: string
   email: string
   name: string
-  avatar: string
+  avatar?: string
   publicCardPacksCount: number
   // количество колод
 
-  created: Date
-  updated: Date
+  created: Date | null
+  updated: Date | null
   isAdmin: boolean
   verified: boolean // подтвердил ли почту
   rememberMe: boolean

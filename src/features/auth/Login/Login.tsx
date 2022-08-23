@@ -5,7 +5,7 @@ import Input from '../../../common/components/Input/Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginTC } from './loginReducer'
 import { AppDispatch, RootState } from '../../../app/store'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import Button from '../../../common/components/Button/Button'
 type FormikErrorType = {
   email?: string
@@ -67,7 +67,7 @@ export function Login() {
           <Button type="submit" className={stl.loginButton} name={'Login'}></Button>
         </form>
         <p>Don`t have an account?</p>
-        <a className={stl.signUpLink}>Sign Up</a>
+        <Link to={'/register'}>Sign Up</Link>
       </div>
     </div>
   )

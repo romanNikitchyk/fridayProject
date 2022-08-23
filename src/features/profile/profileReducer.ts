@@ -1,5 +1,6 @@
 import { userAPI } from '../../api/api'
 import { Dispatch } from 'redux'
+import { ResponseType } from '../auth/Login/loginApi'
 
 export type ProfileActionsType = setProfileUserACType | resetProfileUserDataACType
 export type UserDataType = {
@@ -15,24 +16,24 @@ export type UserDataType = {
   rememberMe: boolean
   //error: string
 }
-const initialState = {
-  _id: null as null | string,
-  email: undefined as undefined | string,
-  name: undefined as undefined | string,
-  avatar: undefined as undefined | string,
-  publicCardPacksCount: null as null | number,
-  created: null as null | Date,
-  updated: null as null | Date,
-  isAdmin: null as null | boolean,
-  verified: null as null | boolean,
-  rememberMe: null as null | boolean,
+const initialState: ResponseType = {
+  _id: '',
+  email: '',
+  name: '',
+  avatar: '',
+  publicCardPacksCount: 0,
+  created: null,
+  updated: null,
+  isAdmin: false,
+  verified: false,
+  rememberMe: false,
   //error: null as null | string,
 }
 
 export type ProfileStateType = typeof initialState
 
 export const profileReducer = (
-  state: ProfileStateType = initialState,
+  state: ResponseType = initialState,
   action: ProfileActionsType
 ): ProfileStateType => {
   switch (action.type) {
@@ -40,23 +41,23 @@ export const profileReducer = (
       return action.userData
     case 'PROFILE/RESET-PROFILE-USER-DATA':
       return {
-        _id: null,
-        email: undefined,
-        name: undefined,
-        avatar: undefined,
-        publicCardPacksCount: null,
+        _id: '',
+        email: '',
+        name: '',
+        avatar: '',
+        publicCardPacksCount: 0,
         created: null,
         updated: null,
-        isAdmin: null,
-        verified: null,
-        rememberMe: null,
+        isAdmin: false,
+        verified: false,
+        rememberMe: false,
       }
     default: {
       return state
     }
   }
 }
-export const setProfileUserAC = (userData: UserDataType) =>
+export const setProfileUserAC = (userData: ResponseType) =>
   ({ type: 'PROFILE/SET-PROFILE-USER', userData } as const)
 const resetProfileUserDataAC = () => ({ type: 'PROFILE/RESET-PROFILE-USER-DATA' } as const)
 
