@@ -9,3 +9,17 @@ export const instance = axios.create({
       : 'https://neko-back.herokuapp.com/2.0',
   withCredentials: true,
 })
+
+type UerDataType = {
+  email: string
+  password: string
+  rememberMe: boolean
+}
+export const userAPI = {
+  getUsers(userData: UerDataType) {
+    return instance.post('/auth/login', userData)
+  },
+  logOut() {
+    return instance.delete('/auth/me', {})
+  },
+}

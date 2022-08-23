@@ -9,7 +9,11 @@ type PropsType = DefaultButtonPropsType & {} // Another props
 
 const Button: FC<PropsType> = ({ className, ...restProps }) => {
   const finalClassName = `${s.default} ${className}`
-  return <button className={finalClassName} {...restProps} />
+  return (
+    <button className={finalClassName} {...restProps} onClick={restProps.onClick}>
+      {restProps.name}
+    </button>
+  )
 }
 
 export default Button
