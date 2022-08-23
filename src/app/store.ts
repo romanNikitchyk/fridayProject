@@ -12,8 +12,8 @@ export type AppActionsType = RegisterActionsType | ProfileActionsType | LoginAct
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ThunkDispatch<RootState, unknown, AppActionsType>
 export type AppThunk<ReturnType = void> = ThunkAction<
-    ReturnType,
-    RootState,
-    unknown,
-    AppActionsType
-    >
+  ReturnType,
+  RootState,
+  unknown,
+  AppActionsType
+>

@@ -44,7 +44,7 @@ export const signUpTC =
       dispatch(setIsRegister(true))
       console.log(res)
     } catch (error) {
-      console.error(error)
+      alert(JSON.stringify(error, null, 2))
     }
     // finally -> loading false
   }

@@ -4,6 +4,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
 import { signUpTC } from './registerReducer'
+import Button from '../../../common/components/Button/Button'
 
 type FormikErrorType = {
   email?: string
@@ -88,7 +89,8 @@ export function Register() {
         </div>
 
         <div>
-          <button type={'submit'}>Sign Up</button>
+          <Button type={'submit'} name={'Sign Up'} />
+          {/*<button type={'submit'}>Sign Up</button>*/}
         </div>
 
         <p>Already have an account?</p>

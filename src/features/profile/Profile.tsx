@@ -1,18 +1,24 @@
 import React from 'react'
 import EditableSpan from '../../common/components/EditableSpan/EditableSpan'
 import Button from '../../common/components/Button/Button'
-import { logOut } from './profileReducer'
+import { logOutTC } from './profileReducer'
 import { useAppDispatch, useAppSelector } from '../../common/hook/hook'
 import style from '../profile/Profile.module.css'
+import { useNavigate } from 'react-router-dom'
+import { setIsLoggedInAC } from '../auth/Login/loginReducer'
 
 export function Profile() {
+    const navigate = useNavigate()
+
     const dispatch = useAppDispatch()
     const userName = useAppSelector((state) => state.profile.name)
     const userAvatar = useAppSelector((state) => state.profile.avatar)
     const userEmail = useAppSelector((state) => state.profile.email)
 
     const resetUserData = () => {
-        dispatch(logOut())
+        dispatch(logOutTC())
+        dispatch(setIsLoggedInAC(false))
+        navigate('/login')
     }
 
     return (
