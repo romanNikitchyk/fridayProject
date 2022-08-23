@@ -1,7 +1,6 @@
-import { Dispatch } from 'redux'
 import { loginApi, LoginParamsType } from './loginApi'
 import { setProfileUserAC } from '../../profile/profileReducer'
-import { AppActionsType } from '../../../app/store'
+import { AppThunk } from '../../../app/store'
 
 const initialState = {
   isLoggedIn: false,
@@ -24,19 +23,19 @@ export const setIsLoggedInAC = (value: boolean) =>
   ({ type: 'login/SET-IS-LOGGED-IN', value } as const)
 
 // thunks
-export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<AppActionsType>) => {
-  loginApi
-    .login(data)
-    .then((res) => {
+export const loginTC =
+  (data: LoginParamsType): AppThunk =>
+  async (dispatch) => {
+    try {
+      let res = await loginApi.login(data)
+
       console.log(res)
       dispatch(setIsLoggedInAC(true))
       dispatch(setProfileUserAC(res.data))
-    })
-
-    .catch((error) => {
+    } catch (error) {
       alert(error)
-    })
-}
+    }
+  }
 
 // types
 export type LoginActionsType = ReturnType<typeof setIsLoggedInAC>
