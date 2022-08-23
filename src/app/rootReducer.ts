@@ -1,8 +1,8 @@
-import { authReducer } from '../features/auth/authReducer'
 import { profileReducer } from '../features/profile/profileReducer'
 import { combineReducers } from 'redux'
+import { registerReducer } from '../features/auth/Register/registerReducer'
 
 export const rootReducer = combineReducers({
-  login: authReducer,
+  register: registerReducer,
   profile: profileReducer,
 })
