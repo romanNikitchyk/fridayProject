@@ -1,7 +1,9 @@
 import React from 'react'
 import Input from '../../../common/components/Input/Input'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useFormik } from 'formik'
+import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
+import { signUpTC } from './registerReducer'
 
 type FormikErrorType = {
   email?: string
@@ -10,6 +12,10 @@ type FormikErrorType = {
 }
 
 export function Register() {
+  const isRegister = useAppSelector((state) => state.register.isRegister)
+  const dispatch = useAppDispatch()
+
+  // ! Задизейблить кнопку и поля во время запроса
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -28,8 +34,8 @@ export function Register() {
 
       if (!values.password) {
         errors.password = 'Empty field!'
-      } else if (!/^[A-Z0-9._%+-]{6,32}$/i.test(values.password)) {
-        errors.password = 'password must be at least 6'
+      } else if (!/^[A-Z0-9._%+-]{8,32}$/i.test(values.password)) {
+        errors.password = 'Password must be more than 7 characters!'
       }
 
       if (!values.confirmPassword) {
@@ -41,11 +47,16 @@ export function Register() {
     },
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2))
-      // dispatch(signUpTC(values))
+      // alert(JSON.stringify(values, null, 2))
+      dispatch(signUpTC(values.email, values.password))
       formik.resetForm()
     },
   })
+
+  if (isRegister) {
+    return <Navigate to={'/login'} />
+    // Нужно ли диспатчить обратно на false?
+  }
 
   return (
     <div>
