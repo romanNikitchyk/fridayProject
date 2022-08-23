@@ -3,7 +3,7 @@ import Input from '../../../common/components/Input/Input'
 import { Link, Navigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
-import { signUpTC } from './registerReducer'
+import { setIsRegister, signUpTC } from './registerReducer'
 
 import Button from '../../../common/components/Button/Button'
 
@@ -17,7 +17,6 @@ export function Register() {
   const isRegister = useAppSelector((state) => state.register.isRegister)
   const dispatch = useAppDispatch()
 
-  // ! Задизейблить кнопку и поля во время запроса
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -49,15 +48,14 @@ export function Register() {
     },
 
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2))
       dispatch(signUpTC(values.email, values.password))
       formik.resetForm()
     },
   })
 
   if (isRegister) {
+    dispatch(setIsRegister(false))
     return <Navigate to={'/login'} />
-    // Нужно ли диспатчить обратно на false?
   }
 
   return (
@@ -91,7 +89,6 @@ export function Register() {
 
         <div>
           <Button type={'submit'} name={'Sign Up'} />
-          {/*<button type={'submit'}>Sign Up</button>*/}
         </div>
 
         <p>Already have an account?</p>
