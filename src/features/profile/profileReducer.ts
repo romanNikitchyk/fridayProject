@@ -2,7 +2,7 @@ import { userAPI } from '../../api/api'
 import { Dispatch } from 'redux'
 
 export type ProfileActionsType = setProfileUserACType | resetProfileUserDataACType
-type UserDataType = {
+export type UserDataType = {
   _id: string
   email: string
   name: string
@@ -56,7 +56,7 @@ export const profileReducer = (
     }
   }
 }
-const setProfileUserAC = (userData: UserDataType) =>
+export const setProfileUserAC = (userData: UserDataType) =>
   ({ type: 'PROFILE/SET-PROFILE-USER', userData } as const)
 const resetProfileUserDataAC = () => ({ type: 'PROFILE/RESET-PROFILE-USER-DATA' } as const)
 
@@ -85,4 +85,4 @@ export const logOut = () => {
 
 export type setProfileUserACType = ReturnType<typeof setProfileUserAC>
 export type resetProfileUserDataACType = ReturnType<typeof resetProfileUserDataAC>
-type ThunkDispatch = Dispatch<ProfileActionsType>
+export type ThunkDispatch = Dispatch<ProfileActionsType>

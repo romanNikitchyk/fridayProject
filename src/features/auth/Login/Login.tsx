@@ -64,9 +64,7 @@ export function Login() {
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
           <a className={stl.fogotLink}>Fogot Password?</a>
-          <Button type="submit" className={stl.loginButton}>
-            Login
-          </Button>
+          <Button type="submit" className={stl.loginButton} name={'Login'}></Button>
         </form>
         <p>Don`t have an account?</p>
         <a className={stl.signUpLink}>Sign Up</a>

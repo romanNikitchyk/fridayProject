@@ -6,10 +6,10 @@ export type LoginParamsType = {
   rememberMe: boolean
 }
 export type ResponseType = {
-  id: string
+  _id: string
   email: string
   name: string
-  avatar?: string
+  avatar: string
   publicCardPacksCount: number
   // количество колод
 

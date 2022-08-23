@@ -1,5 +1,7 @@
 import { Dispatch } from 'redux'
 import { loginApi, LoginParamsType } from './loginApi'
+import { setProfileUserAC } from '../../profile/profileReducer'
+import { AppActionsType } from '../../../app/store'
 
 const initialState = {
   isLoggedIn: false,
@@ -22,12 +24,13 @@ export const setIsLoggedInAC = (value: boolean) =>
   ({ type: 'login/SET-IS-LOGGED-IN', value } as const)
 
 // thunks
-export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<LoginActionsType>) => {
+export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch<AppActionsType>) => {
   loginApi
     .login(data)
     .then((res) => {
       console.log(res)
       dispatch(setIsLoggedInAC(true))
+      dispatch(setProfileUserAC(res.data))
     })
 
     .catch((error) => {
