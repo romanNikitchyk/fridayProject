@@ -14,7 +14,6 @@ export type UserDataType = {
   isAdmin: boolean
   verified: boolean
   rememberMe: boolean
-  //error: string
 }
 const initialState: ResponseType = {
   _id: '',
@@ -27,7 +26,6 @@ const initialState: ResponseType = {
   isAdmin: false,
   verified: false,
   rememberMe: false,
-  //error: null as null | string,
 }
 
 export type ProfileStateType = typeof initialState
@@ -62,20 +60,7 @@ export const setProfileUserAC = (userData: ResponseType) =>
 const resetProfileUserDataAC = () => ({ type: 'PROFILE/RESET-PROFILE-USER-DATA' } as const)
 
 //Thunk
-export const getuser = () => {
-  return (dispatch: ThunkDispatch) => {
-    userAPI
-      .getUsers({
-        email: 'nya-admin@nya.nya',
-        password: '1qazxcvBG',
-        rememberMe: false,
-      })
-      .then((res) => {
-        console.log(res)
-        dispatch(setProfileUserAC(res.data))
-      })
-  }
-}
+
 export const logOut = () => {
   return (dispatch: ThunkDispatch) => {
     userAPI.logOut().finally(() => {
