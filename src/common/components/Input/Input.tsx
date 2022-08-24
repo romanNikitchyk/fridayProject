@@ -4,6 +4,8 @@ import React, {
   FC,
   InputHTMLAttributes,
   KeyboardEvent,
+  FocusEvent,
+  useState,
 } from 'react'
 import s from './Input.module.css'
 
@@ -11,21 +13,28 @@ type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >
-type PropsType = DefaultInputPropsType & {
-  error?: string
+type PropsType = Omit<DefaultInputPropsType, 'type' | 'placeholder'> & {
+  placeholder?: string
+  type?: 'email' | 'password' | 'search' | 'tel' | 'text' | 'url'
+  error?: boolean
+  errorText?: string
   errorClassName?: string
   onChangeText?: (value: string) => void
   onEnter?: () => void
 }
-
 const Input: FC<PropsType> = ({
   type,
   onChange,
+  onBlur,
+  onFocus,
+  value,
   onChangeText,
   onKeyPress,
   onEnter,
   className,
   error,
+  errorText,
+  placeholder,
   errorClassName,
   ...restProps
 }) => {
@@ -41,17 +50,35 @@ const Input: FC<PropsType> = ({
     onEnter && e.key === 'Enter' && onEnter()
   }
 
+  const onFocusHandler = (e: FocusEvent<HTMLInputElement>) => {
+    onFocus && onFocus(e)
+    setHasFocus(true)
+  }
+
+  const onBlurHandler = (e: FocusEvent<HTMLInputElement>) => {
+    onBlur && onBlur(e)
+    setHasFocus(false)
+  }
+
+  const [hasFocus, setHasFocus] = useState(false)
+
   return (
-    <>
+    <div className={s.wrap}>
       <input
         type={type}
+        onFocus={onFocusHandler}
+        onBlur={onBlurHandler}
         onChange={onChangeHandler}
         onKeyDown={onKeyDownHandler}
         className={finalClassName}
+        value={value}
         {...restProps}
       />
-      {error && <div className={finalErrorClassName}>{error}</div>}
-    </>
+      <span className={value || hasFocus ? `${s.placeholder} ${s.up}` : s.placeholder}>
+        {placeholder}
+      </span>
+      {error && <div className={finalErrorClassName}>{errorText}</div>}
+    </div>
   )
 }
 

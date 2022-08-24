@@ -16,10 +16,11 @@ type DefaultInputPropsType = DetailedHTMLProps<
 >
 type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
 
-type PropsType = DefaultInputPropsType & {
+type PropsType = Omit<DefaultInputPropsType, 'type' | 'placeholder'> & {
   onChangeText?: (value: string) => void
   onEnter?: () => void
-  error?: string
+  error?: boolean
+  errorText?: string
 
   spanClassName?: string
   spanProps?: DefaultSpanPropsType

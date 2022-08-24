@@ -4,34 +4,36 @@
   position: relative;
 
   box-sizing: border-box;
-  padding-left: 25px;
+  padding-left: 1.875em;
 }
 
 .checkbox {
   position: absolute;
-  top: -2px;
+  top: 0;
   left: 0;
 
   box-sizing: border-box;
-  width: 25px;
-  height: 25px;
+  width: 1.125em;
+  height: 1.125em;
 
   background-color: #fff;
   background-position: 50%;
-  border: 2px solid #0d68f9;
-  border-radius: 4px;
+  border: 2px solid #366EFF;
+  border-radius: 3px;
 
   transition: all 0.3s ease 0s;
 }
 
 .input {
+  margin: 0;
+
   appearance: none;
 }
 
 .input:checked + .checkbox {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 10 9'%3E%3Cpath fill='%230D68F9' d='M1.464 2.408L5.707 6.65 4.293 8.065.05 3.822l1.414-1.414z'/%3E%3Cpath fill='%230D68F9' d='M8.535.993L9.95 2.408 4.293 8.065 2.879 6.65 8.535.993z'/%3E%3C/svg%3E")
+  background: #366EFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 10 9'%3E%3Cpath fill='%23fff' d='M1.464 2.408L5.707 6.65 4.293 8.065.05 3.822l1.414-1.414z'/%3E%3Cpath fill='%23fff' d='M8.535.993L9.95 2.408 4.293 8.065 2.879 6.65 8.535.993z'/%3E%3C/svg%3E")
     50% / 11px 10px no-repeat;
-  border-color: #0d68f9;
+  border-color: #366EFF;
 }
 
 .input:disabled + .checkbox {
@@ -43,6 +45,7 @@
 }
 
 .input:checked:hover + .checkbox {
+  background-color: #003299;
   border-color: #003299;
 }
 
@@ -51,5 +54,8 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: 0.875em;
+  font-weight: 500;
+  line-height: 17px;
+  text-align: center;
 }
