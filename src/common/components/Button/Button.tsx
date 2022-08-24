@@ -7,11 +7,11 @@ type DefaultButtonPropsType = DetailedHTMLProps<
 >
 type PropsType = DefaultButtonPropsType & {} // Another props
 
-const Button: FC<PropsType> = ({ className, ...restProps }) => {
+const Button: FC<PropsType> = ({ className, children, ...restProps }) => {
   const finalClassName = `${s.default} ${className}`
   return (
     <button className={finalClassName} {...restProps} onClick={restProps.onClick}>
-      {restProps.name}
+      {children}
     </button>
   )
 }
