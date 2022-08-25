@@ -78,9 +78,10 @@ export function Login() {
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
           <Checkbox
-            checked={formik.values.rememberMe}
-            onChange={formik.handleChange}
-            name={'rememberMe'}
+            // checked={formik.values.rememberMe}
+            // onChange={formik.handleChange}
+            // name={'rememberMe'}
+            {...formik.getFieldProps('rememberMe')}
           >
             Remember me
           </Checkbox>
