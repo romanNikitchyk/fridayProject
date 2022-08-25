@@ -8,6 +8,7 @@ import Button from '../../../common/components/Button/Button'
 import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
 import { InitAppTC } from '../authReducer'
 import Checkbox from '../../../common/components/Checkbox/Checkbox'
+import Preloader from '../../../common/components/Preloader/Preloader'
 
 type FormikErrorType = {
   email?: string
@@ -52,6 +53,9 @@ export function Login() {
   if (isLoggedIn && isInit) {
     return <Navigate to={'/profile'} />
   }
+  if (!isInit) {
+    return <Preloader />
+  }
 
   return (
     <div className={stl.wrapper}>
@@ -77,14 +81,7 @@ export function Login() {
           {formik.touched.password && formik.errors.password && (
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
-          <Checkbox
-            // checked={formik.values.rememberMe}
-            // onChange={formik.handleChange}
-            // name={'rememberMe'}
-            {...formik.getFieldProps('rememberMe')}
-          >
-            Remember me
-          </Checkbox>
+          <Checkbox {...formik.getFieldProps('rememberMe')}>Remember me</Checkbox>
           <a className={stl.forgotLink}>Forgot Password?</a>
           <Button type="submit" className={stl.loginButton} name={'Login'} />
         </form>

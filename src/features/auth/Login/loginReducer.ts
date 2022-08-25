@@ -1,6 +1,7 @@
 import { loginApi, LoginParamsType } from './loginApi'
 import { setProfileUserAC } from '../../profile/profileReducer'
 import { AppThunk } from '../../../app/store'
+import { setAppIsInitAC } from '../authReducer'
 
 const initialState = {
   isLoggedIn: false,
@@ -27,6 +28,7 @@ export const loginTC =
   (data: LoginParamsType): AppThunk =>
   async (dispatch) => {
     try {
+      dispatch(setAppIsInitAC(false))
       let res = await loginApi.login(data)
 
       console.log(res)
@@ -34,6 +36,8 @@ export const loginTC =
       dispatch(setProfileUserAC(res.data))
     } catch (error) {
       alert(error)
+    } finally {
+      dispatch(setAppIsInitAC(true))
     }
   }
 
