@@ -15,11 +15,15 @@ type UerDataType = {
   password: string
   rememberMe: boolean
 }
+
 export const userAPI = {
   getUsers(userData: UerDataType) {
     return instance.post('/auth/login', userData)
   },
   logOut() {
     return instance.delete('/auth/me', {})
+  },
+  changeNameUser(name: string) {
+    return instance.put('/auth/login', name)
   },
 }

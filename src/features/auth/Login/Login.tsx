@@ -1,11 +1,11 @@
 import React from 'react'
 import stl from './Login.module.css'
 import { useFormik } from 'formik'
-import Input from '../../../common/components/Input/Input'
 import { loginTC } from './loginReducer'
 import { Link, Navigate } from 'react-router-dom'
 import Button from '../../../common/components/Button/Button'
 import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
+import { MyTextField } from '../../../common/utils/formik-util'
 
 type FormikErrorType = {
   email?: string
@@ -21,6 +21,7 @@ export function Login() {
       password: '',
       rememberMe: false,
     },
+
     validate: (values) => {
       const errors: FormikErrorType = {}
       if (!values.email) {
@@ -52,18 +53,22 @@ export function Login() {
         <h3>It-incubator</h3>
         <h4>Sign IN</h4>
         <form className={stl.loginForm} onSubmit={formik.handleSubmit}>
-          <label htmlFor="email"></label>
+          {/*  <label htmlFor="email">
+            <Input id="email" type="email" {...formik.getFieldProps('email')} />
 
-          <Input id="email" type="email" {...formik.getFieldProps('email')} />
+            {formik.touched.email && formik.errors.email && (
+              <div style={{ color: 'red' }}>{formik.errors.email}</div>
+            )}
+          </label>*/}
+          <MyTextField type="text" name={'email'} formik={formik} />
+          <MyTextField type="password" name={'password'} formik={formik} />
+          {/* <label htmlFor="password">
+            <Input id="password" type="password" {...formik.getFieldProps('password')} />
+            {formik.touched.password && formik.errors.password && (
+              <div style={{ color: 'red' }}>{formik.errors.password}</div>
+            )}
+          </label>*/}
 
-          {formik.touched.email && formik.errors.email && (
-            <div style={{ color: 'red' }}>{formik.errors.email}</div>
-          )}
-          <label htmlFor="password"></label>
-          <Input id="password" type="password" {...formik.getFieldProps('password')} />
-          {formik.touched.password && formik.errors.password && (
-            <div style={{ color: 'red' }}>{formik.errors.password}</div>
-          )}
           <a className={stl.forgotLink}>Forgot Password?</a>
           <Button type="submit" className={stl.loginButton} name={'Login'} />
         </form>
