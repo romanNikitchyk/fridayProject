@@ -97,6 +97,7 @@ export function Test() {
       </div>
 
       <hr />
+
       <div>
         <InputPass placeholder={'Password'} value={value} onChangeText={setValue} />
       </div>

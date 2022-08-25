@@ -18,6 +18,7 @@ type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, H
 
 type PropsType = Omit<DefaultInputPropsType, 'type' | 'placeholder'> & {
   onChangeText?: (value: string) => void
+  onClickButton?: () => void
   onEnter?: () => void
   error?: boolean
   errorText?: string
@@ -28,6 +29,7 @@ type PropsType = Omit<DefaultInputPropsType, 'type' | 'placeholder'> & {
 
 const EditableSpan: FC<PropsType> = ({
   autoFocus,
+  onClickButton,
   onBlur,
   onEnter,
   spanProps,
@@ -52,12 +54,22 @@ const EditableSpan: FC<PropsType> = ({
     onDoubleClick && onDoubleClick(e)
   }
 
+  const onClickButtonHandler = () => {
+    setEditMode(false)
+    onClickButton && onClickButton()
+  }
+
   const spanClassName = `${s.default} ${className}`
 
   return (
     <>
       {editMode ? (
-        <Input autoFocus onBlur={onBlurHandler} onEnter={onEnterHandler} {...restProps} />
+        <div className={s.wrap}>
+          <Input autoFocus onBlur={onBlurHandler} onEnter={onEnterHandler} {...restProps} />
+          <button onClick={onClickButtonHandler} className={s.saveBtn}>
+            SAVE
+          </button>
+        </div>
       ) : (
         <span onDoubleClick={onDoubleClickHandler} className={spanClassName} {...restSpanProps}>
           {children || restProps.value}
