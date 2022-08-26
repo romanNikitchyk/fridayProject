@@ -58,7 +58,7 @@ password recovery link:
 link</a>
 </div>`, // хтмп-письмо, вместо $token$ бэк вставит токен
       }
-      let res = await userAPI.forgetPassword(data)
+      let res = await userAPI.forgotPassword(data)
       console.log(res)
     } catch (error) {
       console.log(error)
