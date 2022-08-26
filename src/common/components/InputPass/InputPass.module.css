@@ -1,0 +1,26 @@
+.wrapInput {
+    position: relative;
+
+    display: inline-block;
+
+}
+.wrapInput input{
+    padding-right: 46px;
+}
+
+.button {
+    cursor: pointer;
+
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+
+    width: 24px;
+    height: 24px;
+
+    background-color: transparent;
+    background-size: contain;
+    border: none;
+
+    transition: all 0.15s ease-in-out 0s;
+}

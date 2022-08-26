@@ -1,15 +1,19 @@
 .default {
   cursor: pointer;
 
-  padding: 20px 25px;
+  padding: 8px 28px;
 
-  font-size: 18px;
-  color: #ffffff;
-  letter-spacing: 2px;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 125%;
+  color: #fff;
+  letter-spacing: 0.01em;
 
-  background: #0d68f9;
+
+  background: #366EFF;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
+  box-shadow: 0 4px 18px rgba(54, 110, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
   transition: all 0.3s ease-in-out 0s;
 }
