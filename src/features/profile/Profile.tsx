@@ -4,12 +4,12 @@ import Button from '../../common/components/Button/Button'
 import { logOutTC } from './profileReducer'
 import { useAppDispatch, useAppSelector } from '../../common/hook/hook'
 import style from '../profile/Profile.module.css'
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { setIsLoggedInAC } from '../auth/Login/loginReducer'
+import { setAppIsInitAC } from '../auth/authReducer'
 
 export function Profile() {
-  const navigate = useNavigate()
-
+  const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const dispatch = useAppDispatch()
   const userName = useAppSelector((state) => state.profile.name)
   const userAvatar = useAppSelector((state) => state.profile.avatar)
@@ -18,7 +18,10 @@ export function Profile() {
   const resetUserData = () => {
     dispatch(logOutTC())
     dispatch(setIsLoggedInAC(false))
-    navigate('/login')
+    dispatch(setAppIsInitAC(false))
+  }
+  if (!isLoggedIn) {
+    return <Navigate to={'/'} />
   }
 
   return (

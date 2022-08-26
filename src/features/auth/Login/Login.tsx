@@ -1,27 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import stl from './Login.module.css'
 import { useFormik } from 'formik'
+import Input from '../../../common/components/Input/Input'
 import { loginTC } from './loginReducer'
 import { Link, Navigate } from 'react-router-dom'
 import Button from '../../../common/components/Button/Button'
 import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
-import { MyTextField } from '../../../common/utils/formik-util'
+import { InitAppTC } from '../authReducer'
+import Checkbox from '../../../common/components/Checkbox/Checkbox'
+import Preloader from '../../../common/components/Preloader/Preloader'
 
 type FormikErrorType = {
   email?: string
   password?: string
+  rememberMe?: false
 }
 
 export function Login() {
+  const isInit = useAppSelector((state) => state.auth.isInitialized)
   const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(InitAppTC())
+  }, [])
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
       rememberMe: false,
     },
-
     validate: (values) => {
       const errors: FormikErrorType = {}
       if (!values.email) {
@@ -42,8 +50,11 @@ export function Login() {
     },
   })
 
-  if (isLoggedIn) {
+  if (isLoggedIn && isInit) {
     return <Navigate to={'/profile'} />
+  }
+  if (!isInit) {
+    return <Preloader />
   }
 
   return (
@@ -53,22 +64,24 @@ export function Login() {
         <h3>It-incubator</h3>
         <h4>Sign IN</h4>
         <form className={stl.loginForm} onSubmit={formik.handleSubmit}>
-          {/*  <label htmlFor="email">
-            <Input id="email" type="email" {...formik.getFieldProps('email')} />
+          <label htmlFor="email"></label>
 
-            {formik.touched.email && formik.errors.email && (
-              <div style={{ color: 'red' }}>{formik.errors.email}</div>
-            )}
-          </label>*/}
-          <MyTextField type="text" name={'email'} formik={formik} />
-          <MyTextField type="password" name={'password'} formik={formik} />
-          {/* <label htmlFor="password">
-            <Input id="password" type="password" {...formik.getFieldProps('password')} />
-            {formik.touched.password && formik.errors.password && (
-              <div style={{ color: 'red' }}>{formik.errors.password}</div>
-            )}
-          </label>*/}
+          <Input id="email" type="email" placeholder={'email'} {...formik.getFieldProps('email')} />
 
+          {formik.touched.email && formik.errors.email && (
+            <div style={{ color: 'red' }}>{formik.errors.email}</div>
+          )}
+          <label htmlFor="password"></label>
+          <Input
+            id="password"
+            type="password"
+            placeholder={'password'}
+            {...formik.getFieldProps('password')}
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div style={{ color: 'red' }}>{formik.errors.password}</div>
+          )}
+          <Checkbox {...formik.getFieldProps('rememberMe')}>Remember me</Checkbox>
           <a className={stl.forgotLink}>Forgot Password?</a>
           <Button type="submit" className={stl.loginButton} name={'Login'} />
         </form>

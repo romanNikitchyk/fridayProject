@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ResponseType } from '../features/auth/Login/loginApi'
 
 export const instance = axios.create({
   // baseURL: 'http://localhost:7542/2.0/',
@@ -10,20 +11,11 @@ export const instance = axios.create({
   withCredentials: true,
 })
 
-type UerDataType = {
-  email: string
-  password: string
-  rememberMe: boolean
-}
-
 export const userAPI = {
-  getUsers(userData: UerDataType) {
-    return instance.post('/auth/login', userData)
+  me() {
+    return instance.post<ResponseType>('/auth/me')
   },
   logOut() {
     return instance.delete('/auth/me', {})
-  },
-  changeNameUser(name: string) {
-    return instance.put('/auth/login', name)
   },
 }
