@@ -1,39 +1,75 @@
+.wrap {
+    position: relative;
+
+    display: inline-block;
+
+}
+
 .default {
-  padding: 15px 20px;
+    display: flex;
+    align-items: center;
 
-  font-size: 18px;
+    padding: 18px 0 4px 0;
 
-  border: 2px solid #0d68f9;
-  border-radius: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 150%;
 
-  transition: all 0.3s ease-in-out 0s;
+    border: none;
+    border-bottom: 2px solid #ccc;
+
+    transition: all 0.3s ease-in-out 0s;
 }
 
-.default:hover,
+.default:hover{
+    border-color: #808080;
+    outline: none;
+}
 .default:focus {
-  border-color: #003299;
-  outline: none;
+    border-color: #366EFF;
+    outline: none;
 }
 
-.default::placeholder {
-  color: #a0a0a0;
-}
+
 
 .default:disabled {
-  color: #003299;
+    color: rgba(0, 0, 0, 0.5);
 
-  opacity: 0.3;
-  background-color: #c3dafe;
+    background-color: rgb(204, 204, 204, 0.2);
 }
 
-.default:disabled::placeholder {
-  color: #0d68f9;
+.default:focus + .placeholder {
+    color: #366EFF;
 }
+
+.placeholder {
+    pointer-events: none;
+
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 154%;
+    color: #808080;
+
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.placeholder.up {
+    bottom: 100%;
+    transform: translate(0, 100%);
+
+    font-size: 0.8125em;
+}
+
 
 .errorDefault {
-  position: absolute;
+    position: absolute;
 
-  font-size: 18px;
-  font-weight: 500;
-  color: #b91c1c;
+    font-size: 15px;
+    font-weight: 500;
+    color: red;
 }

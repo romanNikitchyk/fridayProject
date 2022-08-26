@@ -7,6 +7,7 @@ import Select from '../common/components/Select/Select'
 import Radio from '../common/components/Radio/Radio'
 import InputRange from '../common/components/InputRange/InputRange'
 import InputDoubleRange from '../common/components/InputDoubleRange/InputDoubleRange'
+import { InputPass } from '../common/components/InputPass/InputPass'
 
 export function Test() {
   const [value, setValue] = useState('')
@@ -93,6 +94,12 @@ export function Test() {
         </div>
 
         <InputDoubleRange onChangeRange={onChangeRange2} value={[value1, value2]} />
+      </div>
+
+      <hr />
+
+      <div>
+        <InputPass placeholder={'Password'} value={value} onChangeText={setValue} />
       </div>
     </div>
   )
