@@ -1,29 +1,24 @@
-import React, { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
-import { InitAppTC } from '../authReducer'
+import React from 'react'
+import { useAppDispatch } from '../../../common/hook/hook'
+import { ForgotPasswordTC } from '../authReducer'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import stl from '../Login/Login.module.css'
 import Input from '../../../common/components/Input/Input'
 import Button from '../../../common/components/Button/Button'
-type FormikErrorType = {
+export type FormikDataType = {
   email?: string
 }
 
 export function ForgotPassword() {
-  const isInit = useAppSelector((state) => state.auth.isInitialized)
-  const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(InitAppTC())
-  }, [])
 
   const formik = useFormik({
     initialValues: {
       email: '',
     },
     validate: (values) => {
-      const errors: FormikErrorType = {}
+      const errors: FormikDataType = {}
       if (!values.email) {
         errors.email = 'Required'
       } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -32,6 +27,7 @@ export function ForgotPassword() {
       return errors
     },
     onSubmit: (values) => {
+      dispatch(ForgotPasswordTC(values))
       formik.resetForm()
     },
   })

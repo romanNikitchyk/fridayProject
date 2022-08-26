@@ -34,7 +34,7 @@ export function TestHeader() {
         </NavLink>
       </li>
       <li style={liStyle}>
-        <NavLink to={'/new-pass'} style={activeStyle}>
+        <NavLink to={'/set-new-password'} style={activeStyle}>
           New-pass
         </NavLink>
       </li>

@@ -22,7 +22,7 @@ function App() {
         <Route path={'/profile'} element={<Profile />} />
 
         <Route path={'/recovery'} element={<ForgotPassword />} />
-        <Route path={'/new-pass'} element={<NewPassword />} />
+        <Route path={'/set-new-password'} element={<NewPassword />} />
 
         <Route path={'/*'} element={<PageNotFound />} />
         <Route path={'/test'} element={<Test />} />

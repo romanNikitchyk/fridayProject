@@ -15,7 +15,20 @@ export const userAPI = {
   me() {
     return instance.post<ResponseType>('/auth/me')
   },
+  forgetPassword(data: any) {
+    return instance.post<forgotPasswordResponseType>('/auth/forgot', data)
+  },
   logOut() {
     return instance.delete('/auth/me', {})
   },
+}
+
+export type forgotPasswordResponseType = {
+  info: string
+  error: string
+}
+export type forgotPasswordParamsType = {
+  email: string
+  from: string
+  message: string
 }
