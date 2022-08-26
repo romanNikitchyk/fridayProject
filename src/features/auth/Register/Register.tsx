@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
 import { setIsRegister, signUpTC } from './registerReducer'
 
 import Button from '../../../common/components/Button/Button'
+import { InputPass } from '../../../common/components/InputPass/InputPass'
 
 type FormikErrorType = {
   email?: string
@@ -70,15 +71,14 @@ export function Register() {
         </div>
 
         <div>
-          <Input type={'password'} placeholder={'Password'} {...formik.getFieldProps('password')} />
+          <InputPass placeholder={'Password'} {...formik.getFieldProps('password')} />
           {formik.touched.password && formik.errors.password && (
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
         </div>
 
         <div>
-          <Input
-            type={'password'}
+          <InputPass
             placeholder={'confirm Password'}
             {...formik.getFieldProps('confirmPassword')}
           />
@@ -88,7 +88,7 @@ export function Register() {
         </div>
 
         <div>
-          <Button type={'submit'} name={'Sign Up'} />
+          <Button type={'submit'}>Sign Up</Button>
         </div>
 
         <p>Already have an account?</p>

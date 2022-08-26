@@ -38,16 +38,16 @@ export function ForgotPassword() {
       <div className={stl.loginContainer}>
         <h3>Forgot your password?</h3>
         <form className={stl.loginForm} onSubmit={formik.handleSubmit}>
-          <label htmlFor="email"></label>
-
-          <Input id="email" type="email" placeholder={'Email'} {...formik.getFieldProps('email')} />
+          <Input type="email" placeholder={'Email'} {...formik.getFieldProps('email')} />
 
           {formik.touched.email && formik.errors.email && (
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
           )}
-          <p>Write your Email and we will send you futher instructions</p>
+          <p>Write your Email and we will send you further instructions</p>
 
-          <Button type="submit" className={stl.loginButton} name={'Submit your Email'} />
+          <Button type="submit" className={stl.loginButton}>
+            Submit your Email
+          </Button>
         </form>
         <p>Did you remember your password?</p>
         <Link to={'/login'}>Try to logging in</Link>

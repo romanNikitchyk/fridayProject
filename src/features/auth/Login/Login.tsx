@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
 import { InitAppTC } from '../authReducer'
 import Checkbox from '../../../common/components/Checkbox/Checkbox'
 import Preloader from '../../../common/components/Preloader/Preloader'
+import { InputPass } from '../../../common/components/InputPass/InputPass'
 
 type FormikErrorType = {
   email?: string
@@ -64,31 +65,20 @@ export function Login() {
         <h3>It-incubator</h3>
         <h4>Sign IN</h4>
         <form className={stl.loginForm} onSubmit={formik.handleSubmit}>
-
-            <Input id="email" type="email" {...formik.getFieldProps('email')} />
-
-          <Input id="email" type="email" placeholder={'email'} {...formik.getFieldProps('email')} />
-
+          <Input type="email" placeholder={'email'} {...formik.getFieldProps('email')} />
           {formik.touched.email && formik.errors.email && (
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
           )}
-          <label htmlFor="password"></label>
-          <Input
-            id="password"
-            type="password"
-            placeholder={'password'}
-            {...formik.getFieldProps('password')}
-          />
+
+          <InputPass placeholder={'password'} {...formik.getFieldProps('password')} />
           {formik.touched.password && formik.errors.password && (
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
-          <Checkbox
-            {...formik.getFieldProps('rememberMe')}
-          >
-            Remember me
-          </Checkbox>
+          <Checkbox {...formik.getFieldProps('rememberMe')}>Remember me</Checkbox>
           <a className={stl.forgotLink}>Forgot Password?</a>
-          <Button type="submit" className={stl.loginButton} name={'Login'} />
+          <Button type="submit" className={stl.loginButton}>
+            Login
+          </Button>
         </form>
         <p>Don`t have an account?</p>
         <Link to={'/register'}>Sign Up</Link>

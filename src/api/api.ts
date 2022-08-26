@@ -15,7 +15,7 @@ export const userAPI = {
   me() {
     return instance.post<ResponseType>('/auth/me')
   },
-  forgetPassword(data: any) {
+  forgotPassword(data: any) {
     return instance.post<forgotPasswordResponseType>('/auth/forgot', data)
   },
   logOut() {

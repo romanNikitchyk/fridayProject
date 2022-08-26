@@ -13,7 +13,7 @@ export const authReducer = (
   action: AuthReducerActionsType
 ): InitialStateType => {
   switch (action.type) {
-    case 'APP/SET-ISINIT':
+    case 'APP/SET-IS-INIT':
       return { ...state, isInitialized: action.isInitialized }
     default:
       return { ...state }
@@ -25,7 +25,7 @@ export type InitialStateType = {
 }
 
 export const setAppIsInitAC = (isInitialized: boolean) =>
-  ({ type: 'APP/SET-ISINIT', isInitialized } as const)
+  ({ type: 'APP/SET-IS-INIT', isInitialized } as const)
 
 export type AuthReducerActionsType = ReturnType<typeof setAppIsInitAC>
 

@@ -32,7 +32,7 @@ export function Profile() {
         <EditableSpan value={userName} />
       </div>
       <div>{userEmail}</div>
-      <Button name={'logOut'} onClick={resetUserData} />
+      <Button onClick={resetUserData}>logOut</Button>
     </div>
   )
 }
