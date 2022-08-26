@@ -1,7 +1,7 @@
 import { userAPI } from '../../api/api'
-import { Dispatch } from 'redux'
 import { ResponseType } from '../auth/Login/loginApi'
 import { AppThunk } from '../../app/store'
+import { setAppIsInitAC } from '../auth/authReducer'
 
 export type ProfileActionsType =
   | setProfileUserACType
@@ -44,7 +44,7 @@ export const profileReducer = (
         rememberMe: false,
       }
     case 'PROFILE/SET-NEW-USER-NAME':
-      return { ...state, name: action.name }
+      return { ...state, name: action.updatedUser.name }
     default: {
       return state
     }
@@ -56,8 +56,8 @@ export const setProfileUserAC = (userData: ResponseType) =>
   ({ type: 'PROFILE/SET-PROFILE-USER', userData } as const)
 const resetProfileUserDataAC = () => ({ type: 'PROFILE/RESET-PROFILE-USER-DATA' } as const)
 
-export const setNewUsserNameAC = (name: string) =>
-  ({ type: 'PROFILE/SET-NEW-USER-NAME', name } as const)
+export const setNewUsserNameAC = (updatedUser: ResponseType) =>
+  ({ type: 'PROFILE/SET-NEW-USER-NAME', updatedUser } as const)
 //Thunk
 
 export const logOutTC = (): AppThunk => async (dispatch) => {
@@ -68,12 +68,15 @@ export const logOutTC = (): AppThunk => async (dispatch) => {
     alert(error)
   }
 }
+
 export const changeNameUserTC =
-  (name: string): AppThunk =>
+  (newName: string): AppThunk =>
   async (dispatch) => {
     try {
-      await userAPI.logOut()
-      dispatch(setNewUsserNameAC(name))
+      dispatch(setAppIsInitAC(false))
+      const { data } = await userAPI.changeNameUser(newName)
+      dispatch(setNewUsserNameAC(data.updatedUser))
+      dispatch(setAppIsInitAC(true))
     } catch (error) {
       alert(error)
     }

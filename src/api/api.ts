@@ -21,6 +21,9 @@ export const userAPI = {
   logOut() {
     return instance.delete('/auth/me', {})
   },
+  changeNameUser(newName: string) {
+    return instance.put<ResponseTypeUpdateUser>('/auth/me', { name: newName, avatar: '' })
+  },
 }
 
 export type forgotPasswordResponseType = {
@@ -31,4 +34,8 @@ export type forgotPasswordParamsType = {
   email: string
   from: string
   message: string
+}
+export type ResponseTypeUpdateUser = {
+  updatedUser: ResponseType
+  error?: string
 }

@@ -10,6 +10,7 @@ import { InitAppTC } from '../authReducer'
 import Checkbox from '../../../common/components/Checkbox/Checkbox'
 import Preloader from '../../../common/components/Preloader/Preloader'
 import { InputPass } from '../../../common/components/InputPass/InputPass'
+import { MyTextField } from '../../../common/utils/formik-util'
 
 type FormikErrorType = {
   email?: string
@@ -70,10 +71,7 @@ export function Login() {
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
           )}
 
-          <InputPass placeholder={'password'} {...formik.getFieldProps('password')} />
-          {formik.touched.password && formik.errors.password && (
-            <div style={{ color: 'red' }}>{formik.errors.password}</div>
-          )}
+          <MyTextField name={'password'} formik={formik} />
           <Checkbox {...formik.getFieldProps('rememberMe')}>Remember me</Checkbox>
           <a className={stl.forgotLink}>Forgot Password?</a>
           <Button type="submit" className={stl.loginButton}>
