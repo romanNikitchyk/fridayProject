@@ -64,7 +64,8 @@ export function Login() {
         <h3>It-incubator</h3>
         <h4>Sign IN</h4>
         <form className={stl.loginForm} onSubmit={formik.handleSubmit}>
-          <label htmlFor="email"></label>
+
+            <Input id="email" type="email" {...formik.getFieldProps('email')} />
 
           <Input id="email" type="email" placeholder={'email'} {...formik.getFieldProps('email')} />
 
@@ -81,7 +82,11 @@ export function Login() {
           {formik.touched.password && formik.errors.password && (
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
-          <Checkbox {...formik.getFieldProps('rememberMe')}>Remember me</Checkbox>
+          <Checkbox
+            {...formik.getFieldProps('rememberMe')}
+          >
+            Remember me
+          </Checkbox>
           <a className={stl.forgotLink}>Forgot Password?</a>
           <Button type="submit" className={stl.loginButton} name={'Login'} />
         </form>
