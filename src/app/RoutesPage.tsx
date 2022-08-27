@@ -4,10 +4,10 @@ import { Login } from '../features/auth/Login/Login'
 import { Register } from '../features/auth/Register/Register'
 import { Profile } from '../features/profile/Profile'
 import { ForgotPassword } from '../features/auth/ForgotPassword/ForgotPassword/ForgotPassword'
-import { NewPassword } from '../features/auth/NewPassword/NewPassword'
 import { PageNotFound } from '../common/components/PageNotFound/PageNotFound'
 import { Test } from '../features/Test'
 import { CheckMail } from '../features/auth/ForgotPassword/CheckMail/CheckMail'
+import { SetNewPassword } from '../features/auth/ForgotPassword/SetNewPassword/SetNewPassword'
 
 export const RoutesPage = () => {
   return (
@@ -20,7 +20,7 @@ export const RoutesPage = () => {
 
       <Route path={'/recovery'} element={<ForgotPassword />} />
       <Route path={'/check-mail'} element={<CheckMail />} />
-      <Route path={'/set-new-password'} element={<NewPassword />} />
+      <Route path={'/set-new-password/:token'} element={<SetNewPassword />} />
 
       <Route path={'/*'} element={<PageNotFound />} />
       <Route path={'/test'} element={<Test />} />
