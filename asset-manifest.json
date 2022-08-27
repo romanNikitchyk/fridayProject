@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/fridayProject/static/css/main.0dbcb5b2.css",
-    "main.js": "/fridayProject/static/js/main.1f29f454.js",
-    "static/js/787.ec704a7a.chunk.js": "/fridayProject/static/js/787.ec704a7a.chunk.js",
-    "static/media/spinner.svg": "/fridayProject/static/media/spinner.3eea19b720bfaa1921b66c0d7ea6bd1c.svg",
-    "index.html": "/fridayProject/index.html",
-    "main.0dbcb5b2.css.map": "/fridayProject/static/css/main.0dbcb5b2.css.map",
-    "main.1f29f454.js.map": "/fridayProject/static/js/main.1f29f454.js.map",
-    "787.ec704a7a.chunk.js.map": "/fridayProject/static/js/787.ec704a7a.chunk.js.map"
+    "main.css": "/fridayProject/Zherdev/static/css/main.84d09f8e.css",
+    "main.js": "/fridayProject/Zherdev/static/js/main.6d02ae7d.js",
+    "static/js/787.ec704a7a.chunk.js": "/fridayProject/Zherdev/static/js/787.ec704a7a.chunk.js",
+    "static/media/spinner.svg": "/fridayProject/Zherdev/static/media/spinner.3eea19b720bfaa1921b66c0d7ea6bd1c.svg",
+    "index.html": "/fridayProject/Zherdev/index.html",
+    "main.84d09f8e.css.map": "/fridayProject/Zherdev/static/css/main.84d09f8e.css.map",
+    "main.6d02ae7d.js.map": "/fridayProject/Zherdev/static/js/main.6d02ae7d.js.map",
+    "787.ec704a7a.chunk.js.map": "/fridayProject/Zherdev/static/js/787.ec704a7a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0dbcb5b2.css",
-    "static/js/main.1f29f454.js"
+    "static/css/main.84d09f8e.css",
+    "static/js/main.6d02ae7d.js"
   ]
 }
