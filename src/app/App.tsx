@@ -1,34 +1,20 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-
-import { Main } from '../features/Main'
-import { Login } from '../features/auth/Login/Login'
-import { Register } from '../features/auth/Register/Register'
-import { Profile } from '../features/profile/Profile'
-import { ForgotPassword } from '../features/auth/ForgotPassword/ForgotPassword'
-import { NewPassword } from '../features/auth/NewPassword/NewPassword'
-import { PageNotFound } from '../common/components/PageNotFound/PageNotFound'
-import { Test } from '../features/Test'
+import React, { useEffect } from 'react'
 import { TestHeader } from '../TestHeader'
+import { initAppTC } from '../features/auth/authReducer'
+import { useAppDispatch } from '../common/hook/hook'
+import { RoutesPage } from './RoutesPage'
 
 function App() {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(initAppTC())
+  }, [])
+
   return (
     <div className="App">
-      <Routes>
-        <Route path={'/'} element={<Main />} />
-
-        <Route path={'/login'} element={<Login />} />
-        <Route path={'/register'} element={<Register />} />
-        <Route path={'/profile'} element={<Profile />} />
-
-        <Route path={'/recovery'} element={<ForgotPassword />} />
-        <Route path={'/set-new-password'} element={<NewPassword />} />
-
-        <Route path={'/*'} element={<PageNotFound />} />
-        <Route path={'/test'} element={<Test />} />
-      </Routes>
-
       <TestHeader />
+      <RoutesPage />
     </div>
   )
 }

@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '../../common/hook/hook'
 import style from '../profile/Profile.module.css'
 import { Navigate } from 'react-router-dom'
 import { setIsLoggedInAC } from '../auth/Login/loginReducer'
-import { setAppIsInitAC } from '../auth/authReducer'
 import Preloader from '../../common/components/Preloader/Preloader'
 
 export function Profile() {
@@ -20,7 +19,6 @@ export function Profile() {
   const resetUserData = () => {
     dispatch(logOutTC())
     dispatch(setIsLoggedInAC(false))
-    dispatch(setAppIsInitAC(false))
   }
   if (!isLoggedIn) {
     return <Navigate to={'/'} />

@@ -28,11 +28,11 @@ export function TestHeader() {
           Login
         </NavLink>
       </li>
-      <li style={liStyle}>
-        <NavLink to={'/'} style={activeStyle}>
-          Main
-        </NavLink>
-      </li>
+      {/*<li style={liStyle}>*/}
+      {/*  <NavLink to={'/'} style={activeStyle}>*/}
+      {/*    Main*/}
+      {/*  </NavLink>*/}
+      {/*</li>*/}
       <li style={liStyle}>
         <NavLink to={'/set-new-password'} style={activeStyle}>
           New-pass

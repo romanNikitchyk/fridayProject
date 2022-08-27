@@ -12,29 +12,11 @@ export const instance = axios.create({
 })
 
 export const userAPI = {
-  me() {
-    return instance.post<ResponseType>('/auth/me')
-  },
-  forgotPassword(data: any) {
-    return instance.post<forgotPasswordResponseType>('/auth/forgot', data)
-  },
-  logOut() {
-    return instance.delete('/auth/me', {})
-  },
   changeNameUser(newName: string) {
     return instance.put<ResponseTypeUpdateUser>('/auth/me', { name: newName, avatar: '' })
   },
 }
 
-export type forgotPasswordResponseType = {
-  info: string
-  error: string
-}
-export type forgotPasswordParamsType = {
-  email: string
-  from: string
-  message: string
-}
 export type ResponseTypeUpdateUser = {
   updatedUser: ResponseType
   error?: string

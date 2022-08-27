@@ -1,8 +1,7 @@
 import { AppThunk } from '../../app/store'
 import { setProfileUserAC } from '../profile/profileReducer'
 import { setIsLoggedInAC } from './Login/loginReducer'
-import { userAPI } from '../../api/api'
-import { FormikDataType } from './ForgotPassword/ForgotPassword'
+import { authApi } from './authApi'
 
 const initialState: InitialStateType = {
   isInitialized: false,
@@ -16,7 +15,7 @@ export const authReducer = (
     case 'APP/SET-IS-INIT':
       return { ...state, isInitialized: action.isInitialized }
     default:
-      return { ...state }
+      return state
   }
 }
 
@@ -29,37 +28,14 @@ export const setAppIsInitAC = (isInitialized: boolean) =>
 
 export type AuthReducerActionsType = ReturnType<typeof setAppIsInitAC>
 
-export const InitAppTC = (): AppThunk => {
+export const initAppTC = (): AppThunk => {
   return async (dispatch) => {
     try {
       dispatch(setAppIsInitAC(false))
-      let res = await userAPI.me()
+      let res = await authApi.me()
       console.log(res)
       dispatch(setIsLoggedInAC(true))
       dispatch(setProfileUserAC(res.data))
-    } catch (error) {
-      console.log(error)
-    } finally {
-      dispatch(setAppIsInitAC(true))
-    }
-  }
-}
-export const ForgotPasswordTC = (email: FormikDataType): AppThunk => {
-  return async (dispatch) => {
-    try {
-      dispatch(setAppIsInitAC(false))
-      let data = {
-        ...email, // кому восстанавливать пароль
-        from: 'cards-nya <neko.nyakus.cafe@gmail.com>',
-        // можно указать разработчика фронта)
-        message: `<div style="background-color: lime; padding: 15px">
-password recovery link: 
-<a href='http://localhost:3000/#/set-new-password/$token$'>
-link</a>
-</div>`, // хтмп-письмо, вместо $token$ бэк вставит токен
-      }
-      let res = await userAPI.forgotPassword(data)
-      console.log(res)
     } catch (error) {
       console.log(error)
     } finally {

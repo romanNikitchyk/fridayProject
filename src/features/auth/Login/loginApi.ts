@@ -24,4 +24,7 @@ export const loginApi = {
   login(data: LoginParamsType) {
     return instance.post<ResponseType>('/auth/login', data)
   },
+  logOut() {
+    return instance.delete('/auth/me', {})
+  },
 }

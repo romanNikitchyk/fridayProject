@@ -1,11 +1,11 @@
 import React from 'react'
 import { useAppDispatch } from '../../../common/hook/hook'
-import { ForgotPasswordTC } from '../authReducer'
 import { useFormik } from 'formik'
 import { Link } from 'react-router-dom'
 import stl from '../Login/Login.module.css'
 import Input from '../../../common/components/Input/Input'
 import Button from '../../../common/components/Button/Button'
+import { forgotPasswordTC } from './forgotReducer'
 export type FormikDataType = {
   email?: string
 }
@@ -27,7 +27,7 @@ export function ForgotPassword() {
       return errors
     },
     onSubmit: (values) => {
-      dispatch(ForgotPasswordTC(values))
+      dispatch(forgotPasswordTC(values))
       formik.resetForm()
     },
   })

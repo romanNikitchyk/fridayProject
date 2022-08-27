@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import stl from './Login.module.css'
 import { useFormik } from 'formik'
 import Input from '../../../common/components/Input/Input'
@@ -6,10 +6,8 @@ import { loginTC } from './loginReducer'
 import { Link, Navigate } from 'react-router-dom'
 import Button from '../../../common/components/Button/Button'
 import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
-import { InitAppTC } from '../authReducer'
 import Checkbox from '../../../common/components/Checkbox/Checkbox'
 import Preloader from '../../../common/components/Preloader/Preloader'
-import { InputPass } from '../../../common/components/InputPass/InputPass'
 import { MyTextField } from '../../../common/utils/formik-util'
 
 type FormikErrorType = {
@@ -22,9 +20,6 @@ export function Login() {
   const isInit = useAppSelector((state) => state.auth.isInitialized)
   const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(InitAppTC())
-  }, [])
 
   const formik = useFormik({
     initialValues: {
