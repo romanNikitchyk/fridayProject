@@ -3,10 +3,11 @@ import { Route, Routes } from 'react-router-dom'
 import { Login } from '../features/auth/Login/Login'
 import { Register } from '../features/auth/Register/Register'
 import { Profile } from '../features/profile/Profile'
-import { ForgotPassword } from '../features/auth/ForgotPassword/ForgotPassword'
+import { ForgotPassword } from '../features/auth/ForgotPassword/ForgotPassword/ForgotPassword'
 import { NewPassword } from '../features/auth/NewPassword/NewPassword'
 import { PageNotFound } from '../common/components/PageNotFound/PageNotFound'
 import { Test } from '../features/Test'
+import { CheckMail } from '../features/auth/ForgotPassword/CheckMail/CheckMail'
 
 export const RoutesPage = () => {
   return (
@@ -18,6 +19,7 @@ export const RoutesPage = () => {
       <Route path={'/profile'} element={<Profile />} />
 
       <Route path={'/recovery'} element={<ForgotPassword />} />
+      <Route path={'/check-mail'} element={<CheckMail />} />
       <Route path={'/set-new-password'} element={<NewPassword />} />
 
       <Route path={'/*'} element={<PageNotFound />} />

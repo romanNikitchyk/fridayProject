@@ -1,17 +1,18 @@
 import React from 'react'
-import { useAppDispatch } from '../../../common/hook/hook'
+import { useAppDispatch } from '../../../../common/hook/hook'
 import { useFormik } from 'formik'
-import { Link } from 'react-router-dom'
-import stl from '../Login/Login.module.css'
-import Input from '../../../common/components/Input/Input'
-import Button from '../../../common/components/Button/Button'
-import { forgotPasswordTC } from './forgotReducer'
+import { Link, useNavigate } from 'react-router-dom'
+import stl from '../../ForgotPassword/ForgotPassword/ForgotPassword.module.css'
+import Input from '../../../../common/components/Input/Input'
+import Button from '../../../../common/components/Button/Button'
+import { forgotPasswordTC } from '../forgotReducer'
 export type FormikDataType = {
   email?: string
 }
 
 export function ForgotPassword() {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -29,6 +30,7 @@ export function ForgotPassword() {
     onSubmit: (values) => {
       dispatch(forgotPasswordTC(values))
       formik.resetForm()
+      navigate('/check-mail')
     },
   })
 

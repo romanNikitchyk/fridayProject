@@ -1,6 +1,6 @@
 import { AppThunk } from '../../../app/store'
 import { setAppIsInitAC } from '../authReducer'
-import { FormikDataType } from './ForgotPassword'
+import { FormikDataType } from './ForgotPassword/ForgotPassword'
 import { forgotApi } from './forgotApi'
 
 export const forgotPasswordTC = (email: FormikDataType): AppThunk => {
