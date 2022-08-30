@@ -1,6 +1,13 @@
 import { NavLink } from 'react-router-dom'
+import { useAppSelector } from './common/hook/hook'
+import Error from './common/components/ErrorOrMessage/Error'
+import Message from './common/components/ErrorOrMessage/Message'
 
 export function TestHeader() {
+  const error = useAppSelector((state) => state.auth.error)
+  const errorText = useAppSelector((state) => state.auth.errorText)
+  const message = useAppSelector((state) => state.auth.message)
+  const messageText = useAppSelector((state) => state.auth.messegeText)
   const liStyle = { padding: 10, fontSize: 20, fontWeight: 700 }
   const activeStyle = ({ isActive }: { isActive: boolean }) =>
     isActive
@@ -23,6 +30,9 @@ export function TestHeader() {
         bottom: 0,
       }}
     >
+      {error && <Error text={errorText} />}
+      {message && <Message text={messageText} />}
+      {}
       <li style={liStyle}>
         <NavLink to={'/login'} style={activeStyle}>
           Login

@@ -1,0 +1,8 @@
+.MessageButton {
+    height: 50px;
+
+    color: white;
+
+    background-color: green;
+    border-radius: 5px;
+}

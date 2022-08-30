@@ -1,7 +1,7 @@
 import { userAPI } from '../../api/api'
 import { loginApi, ResponseType } from '../auth/Login/loginApi'
 import { AppThunk } from '../../app/store'
-import { setAppIsInitAC } from '../auth/authReducer'
+import { setAppIsInitAC, setErrorStatusAC, setMessageTextAC } from '../auth/authReducer'
 
 export type ProfileActionsType =
   | setProfileUserACType
@@ -62,10 +62,17 @@ export const setNewUsserNameAC = (updatedUser: ResponseType) =>
 
 export const logOutTC = (): AppThunk => async (dispatch) => {
   try {
-    await loginApi.logOut()
+    let res = await loginApi.logOut()
+    dispatch(setMessageTextAC(true, res.data.info))
+    setTimeout(() => {
+      dispatch(setMessageTextAC(false, ''))
+    }, 6000)
     dispatch(resetProfileUserDataAC())
-  } catch (error) {
-    alert(error)
+  } catch (error: any) {
+    dispatch(setErrorStatusAC(true, error.response.data.error))
+    setTimeout(() => {
+      dispatch(setErrorStatusAC(false, ''))
+    }, 6000)
   }
 }
 

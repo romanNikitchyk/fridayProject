@@ -5,15 +5,24 @@ import { authApi } from './authApi'
 
 const initialState: InitialStateType = {
   isInitialized: false,
+  messegeText: '',
+  message: false,
+  error: false,
+  errorText: '',
 }
 
 export const authReducer = (
   state: InitialStateType = initialState,
   action: AuthReducerActionsType
 ): InitialStateType => {
+  debugger
   switch (action.type) {
     case 'APP/SET-IS-INIT':
       return { ...state, isInitialized: action.isInitialized }
+    case 'APP/SET-IS-ERROR':
+      return { ...state, error: action.payload2, errorText: action.payload }
+    case 'APP/SET-IS-MESSAGE':
+      return { ...state, message: action.payload, messegeText: action.payload2 }
     default:
       return state
   }
@@ -21,23 +30,41 @@ export const authReducer = (
 
 export type InitialStateType = {
   isInitialized: boolean
+  message: boolean
+  messegeText: string
+  error: boolean
+  errorText: string
 }
 
 export const setAppIsInitAC = (isInitialized: boolean) =>
   ({ type: 'APP/SET-IS-INIT', isInitialized } as const)
+export const setErrorStatusAC = (error: boolean, errorText: string) => {
+  return { type: 'APP/SET-IS-ERROR', payload: errorText, payload2: error } as const
+}
+export const setMessageTextAC = (Message: boolean, messegeText: string) => {
+  return { type: 'APP/SET-IS-MESSAGE', payload: Message, payload2: messegeText } as const
+}
 
-export type AuthReducerActionsType = ReturnType<typeof setAppIsInitAC>
+export type AuthReducerActionsType =
+  | SetAppIsInitACType
+  | SetErrorStatusACType
+  | SetMessageTextACType
+export type SetAppIsInitACType = ReturnType<typeof setAppIsInitAC>
+export type SetErrorStatusACType = ReturnType<typeof setErrorStatusAC>
+export type SetMessageTextACType = ReturnType<typeof setMessageTextAC>
 
 export const initAppTC = (): AppThunk => {
   return async (dispatch) => {
     try {
       dispatch(setAppIsInitAC(false))
       let res = await authApi.me()
-      console.log(res)
       dispatch(setIsLoggedInAC(true))
       dispatch(setProfileUserAC(res.data))
-    } catch (error) {
-      console.log(error)
+    } catch (error: any) {
+      dispatch(setErrorStatusAC(true, error.response.data.error))
+      setTimeout(() => {
+        dispatch(setErrorStatusAC(false, ''))
+      }, 6000)
     } finally {
       dispatch(setAppIsInitAC(true))
     }

@@ -18,6 +18,7 @@ export type ResponseType = {
   isAdmin: boolean
   verified: boolean // подтвердил ли почту
   rememberMe: boolean
+  error?: string
 }
 
 export const loginApi = {

@@ -1,5 +1,6 @@
 import { registerAPI } from './registerAPI'
 import { AppThunk } from '../../../app/store'
+import { setErrorStatusAC } from '../authReducer'
 
 export type RegisterActionsType = ReturnType<typeof setIsRegister>
 
@@ -42,9 +43,11 @@ export const signUpTC =
     try {
       const res = await registerAPI.register(user, password)
       dispatch(setIsRegister(true))
-      console.log(res)
-    } catch (error) {
-      alert(JSON.stringify(error, null, 2))
+    } catch (error: any) {
+      dispatch(setErrorStatusAC(true, error.response.data.error))
+      setTimeout(() => {
+        dispatch(setErrorStatusAC(false, ''))
+      }, 6000)
     }
     // finally -> loading false
   }
