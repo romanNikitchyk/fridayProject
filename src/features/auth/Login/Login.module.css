@@ -1,41 +1,93 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  width: 100%;
-  height: 100vh;
+.login {
+  padding-top: 60px;
 }
-.loginContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.cardLogin {
+  max-width: 413px;
+  margin: 0 auto;
+  padding: 35px 33px 38px;
 
-  width: 30%;
-  height: 60%;
-
-  background-color: #F9F9FE;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), -1px -1px 2px rgba(0, 0, 0, 0.1);
 }
+
 .title {
-  padding-bottom: 80px;
-}
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.fogotLink {
-  margin-left: 250px;
-  padding: 20px;
+  margin-top: 0;
+  margin-bottom: 41px;
 
+  font-size: 1.625em;
+  font-weight: 600;
+  line-height: 123%;
+  text-align: center;
+
+}
+
+.wrapInput {
+  width: 100%;
+  margin-bottom: 24px;
+}
+.wrapInput input {
+  width: 100%;
+}
+
+
+.wrapCheckbox {
+  margin-bottom: 28px;
+}
+
+.wrapForgotLink {
   text-align: right;
 }
-.loginButton {
-  padding: 20px;
+
+.wrapForgotLink a{
+  display: inline-block;
+
+  margin-bottom: 69px;
+
+  font-family: inherit;
+  font-size: 0.875em;
+  font-weight: 500;
+  line-height: 121%;
+  color: #000;
+  text-decoration: none;
+
+  transition: all 0.3s ease-in-out 0s;
 }
-.signUpLink {
-  padding: 20px;
+
+.wrapForgotLink a:hover {
+  color: #DD3636
+}
+
+.wrapSignIn {
+  margin-bottom: 31px;
+
+}
+.wrapSignIn button{
+  width: 100%;
+}
+
+.text {
+  margin-bottom: 7px;
+
+  font-size: 0.875em;
+  font-weight: 600;
+  line-height: 171%;
+  color: #808080;
+  text-align: center;
+}
+
+.wrapRegister {
+  text-align: center;
+}
+.wrapRegister a{
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 150%;
+  color: #366EFF;
+
+  transition: all 0.3s ease-in-out 0s;
+}
+.wrapRegister a:hover {
+  color: #003299;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import stl from './Login.module.css'
+import styles from './Login.module.css'
 import { useFormik } from 'formik'
 import Input from '../../../common/components/Input/Input'
 import { loginTC } from './loginReducer'
@@ -50,31 +50,43 @@ export function Login() {
   if (isLoggedIn && isInit) {
     return <Navigate to={'/Profile'} />
   }
+
   if (!isInit) {
     return <Preloader />
   }
 
   return (
-    <div className={stl.wrapper}>
-      <h2 className={stl.title}>Login Page</h2>
-      <div className={stl.loginContainer}>
-        <h3>It-incubator</h3>
-        <h4>Sign IN</h4>
-        <form className={stl.loginForm} onSubmit={formik.handleSubmit}>
-          <Input type="email" placeholder={'email'} {...formik.getFieldProps('email')} />
+    <div className={styles.login}>
+      <div className={styles.cardLogin}>
+        <h2 className={styles.title}>Sign in</h2>
+        <form className={styles.loginForm} onSubmit={formik.handleSubmit}>
+          <Input
+            className={styles.wrapInput}
+            type="email"
+            placeholder={'email'}
+            {...formik.getFieldProps('email')}
+          />
           {formik.touched.email && formik.errors.email && (
             <div style={{ color: 'red' }}>{formik.errors.email}</div>
           )}
 
-          <MyTextField name={'password'} formik={formik} />
-          <Checkbox {...formik.getFieldProps('rememberMe')}>Remember me</Checkbox>
-          <a className={stl.forgotLink}>Forgot Password?</a>
-          <Button type="submit" className={stl.loginButton}>
-            Login
-          </Button>
+          <MyTextField className={styles.wrapInput} name={'password'} formik={formik} />
+          <div className={styles.wrapCheckbox}>
+            <Checkbox {...formik.getFieldProps('rememberMe')}>Remember me</Checkbox>
+          </div>
+          <div className={styles.wrapForgotLink}>
+            <Link to={'recovery'}>Forgot Password?</Link>
+          </div>
+          <div className={styles.wrapSignIn}>
+            <Button type="submit" className={styles.loginButton}>
+              Sign In
+            </Button>
+          </div>
+          <p className={styles.text}>Already have an account?</p>
+          <div className={styles.wrapRegister}>
+            <Link to={'/register'}>Sign Up</Link>
+          </div>
         </form>
-        <p>Don`t have an account?</p>
-        <Link to={'/register'}>Sign Up</Link>
       </div>
     </div>
   )

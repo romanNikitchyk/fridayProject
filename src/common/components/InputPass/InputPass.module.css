@@ -3,8 +3,11 @@
 
     display: inline-block;
 
+    width: 100%;
+
 }
 .wrapInput input{
+    box-sizing: border-box;
     padding-right: 46px;
 }
 
@@ -12,8 +15,8 @@
     cursor: pointer;
 
     position: absolute;
+    top: 16px;
     right: 16px;
-    bottom: 8px;
 
     width: 24px;
     height: 24px;

@@ -38,7 +38,7 @@ export function Profile() {
         Back to Packs List
       </Link>
       <div className={style.cardProfile}>
-        <h2 className={style.title}>Profile Page</h2>
+        <h3 className={style.title}>Profile Page</h3>
         <div className={style.wrapAvatar}>
           <img src={userAvatar ? userAvatar : avatar} alt="avatar" />
           <button className={style.addPhotoBtn} onClick={changePhotoHandler} />

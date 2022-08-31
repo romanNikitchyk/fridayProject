@@ -38,7 +38,7 @@ const Input: FC<PropsType> = ({
   errorClassName,
   ...restProps
 }) => {
-  const finalClassName = `${s.default} ${className}`
+  const finalClassName = `${s.wrap} ${className}`
   const finalErrorClassName = `${s.errorDefault} ${errorClassName}`
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,14 +63,14 @@ const Input: FC<PropsType> = ({
   const [hasFocus, setHasFocus] = useState(false)
 
   return (
-    <div className={s.wrap}>
+    <div className={finalClassName}>
       <input
         type={type}
         onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         onChange={onChangeHandler}
         onKeyDown={onKeyDownHandler}
-        className={finalClassName}
+        className={s.default}
         value={value}
         {...restProps}
       />

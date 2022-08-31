@@ -1,15 +1,14 @@
 import React from 'react'
-import Input from '../components/Input/Input'
-import { InputPass } from '../components/InputPass/InputPass'
+import { InputPass, PropsType } from '../components/InputPass/InputPass'
 
-type PropsType = {
+type MyTextFieldPropsType = {
   name: string
   formik: any
-}
-export const MyTextField = ({ name, formik }: PropsType) => {
+} & PropsType
+export const MyTextField = ({ name, formik, ...restProps }: MyTextFieldPropsType) => {
   return (
     <>
-      <InputPass placeholder={name} {...formik.getFieldProps(name)} />
+      <InputPass placeholder={name} {...formik.getFieldProps(name)} {...restProps} />
       {formik.touched[name] && formik.errors[name] && (
         <div style={{ color: 'red' }}>{formik.errors[name]}</div>
       )}

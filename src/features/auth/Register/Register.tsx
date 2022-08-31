@@ -71,7 +71,11 @@ export function Register() {
         </div>
 
         <div>
-          <InputPass placeholder={'Password'} {...formik.getFieldProps('password')} />
+          <InputPass
+            autoComplete="off"
+            placeholder={'Password'}
+            {...formik.getFieldProps('password')}
+          />
           {formik.touched.password && formik.errors.password && (
             <div style={{ color: 'red' }}>{formik.errors.password}</div>
           )}
@@ -79,6 +83,7 @@ export function Register() {
 
         <div>
           <InputPass
+            autoComplete="off"
             placeholder={'confirm Password'}
             {...formik.getFieldProps('confirmPassword')}
           />

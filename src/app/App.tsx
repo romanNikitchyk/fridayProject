@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { TestHeader } from '../TestHeader'
 import { initAppTC } from '../features/auth/authReducer'
 import { useAppDispatch } from '../common/hook/hook'
 import { RoutesPage } from './RoutesPage'
@@ -15,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <TestHeader />
+      {/*<TestHeader />*/}
       <div className="container">
         <RoutesPage />
       </div>
