@@ -1,5 +1,5 @@
 import { loginApi, LoginParamsType } from './loginApi'
-import { setProfileUserAC } from '../../profile/profileReducer'
+import { setProfileUserAC } from '../../Profile/profileReducer'
 import { AppThunk } from '../../../app/store'
 import { setAppIsInitAC, setErrorStatusAC } from '../authReducer'
 

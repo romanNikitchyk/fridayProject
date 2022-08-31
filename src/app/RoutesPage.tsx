@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Login } from '../features/auth/Login/Login'
 import { Register } from '../features/auth/Register/Register'
-import { Profile } from '../features/profile/Profile'
+import { Profile } from '../features/Profile/Profile'
 import { ForgotPassword } from '../features/auth/ForgotPassword/ForgotPassword/ForgotPassword'
 import { PageNotFound } from '../common/components/PageNotFound/PageNotFound'
 import { Test } from '../features/Test'
@@ -16,7 +16,7 @@ export const RoutesPage = () => {
 
       <Route path={'/login'} element={<Login />} />
       <Route path={'/register'} element={<Register />} />
-      <Route path={'/profile'} element={<Profile />} />
+      <Route path={'/Profile'} element={<Profile />} />
 
       <Route path={'/recovery'} element={<ForgotPassword />} />
       <Route path={'/check-mail'} element={<CheckMail />} />

@@ -22,6 +22,7 @@ type PropsType = Omit<DefaultInputPropsType, 'type' | 'placeholder'> & {
   onEnter?: () => void
   error?: boolean
   errorText?: string
+  wrapClassName?: string
 
   spanClassName?: string
   spanProps?: DefaultSpanPropsType
@@ -29,6 +30,7 @@ type PropsType = Omit<DefaultInputPropsType, 'type' | 'placeholder'> & {
 
 const EditableSpan: FC<PropsType> = ({
   autoFocus,
+  wrapClassName,
   onClickButton,
   onBlur,
   onEnter,
@@ -60,9 +62,10 @@ const EditableSpan: FC<PropsType> = ({
   }
 
   const spanClassName = `${s.default} ${className}`
+  const totalWrapClassName = `${s.wrapDefault} ${wrapClassName}`
 
   return (
-    <>
+    <div className={totalWrapClassName}>
       {editMode ? (
         <div className={s.wrap}>
           <Input autoFocus onBlur={onBlurHandler} onEnter={onEnterHandler} {...restProps} />
@@ -75,7 +78,7 @@ const EditableSpan: FC<PropsType> = ({
           {children || restProps.value}
         </span>
       )}
-    </>
+    </div>
   )
 }
 

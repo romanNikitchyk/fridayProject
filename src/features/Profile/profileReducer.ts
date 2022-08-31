@@ -6,7 +6,7 @@ import { setAppIsInitAC, setErrorStatusAC, setMessageTextAC } from '../auth/auth
 export type ProfileActionsType =
   | setProfileUserACType
   | resetProfileUserDataACType
-  | setNewUsserNameACType
+  | setNewUserNameACType
 
 const initialState: ResponseType = {
   _id: '',
@@ -56,7 +56,7 @@ export const setProfileUserAC = (userData: ResponseType) =>
   ({ type: 'PROFILE/SET-PROFILE-USER', userData } as const)
 const resetProfileUserDataAC = () => ({ type: 'PROFILE/RESET-PROFILE-USER-DATA' } as const)
 
-export const setNewUsserNameAC = (updatedUser: ResponseType) =>
+export const setNewUserNameAC = (updatedUser: ResponseType) =>
   ({ type: 'PROFILE/SET-NEW-USER-NAME', updatedUser } as const)
 //Thunk
 
@@ -82,7 +82,7 @@ export const changeNameUserTC =
     try {
       dispatch(setAppIsInitAC(false))
       const { data } = await userAPI.changeNameUser(newName)
-      dispatch(setNewUsserNameAC(data.updatedUser))
+      dispatch(setNewUserNameAC(data.updatedUser))
       dispatch(setAppIsInitAC(true))
     } catch (error) {
       alert(error)
@@ -91,4 +91,4 @@ export const changeNameUserTC =
 
 export type setProfileUserACType = ReturnType<typeof setProfileUserAC>
 export type resetProfileUserDataACType = ReturnType<typeof resetProfileUserDataAC>
-export type setNewUsserNameACType = ReturnType<typeof setNewUsserNameAC>
+export type setNewUserNameACType = ReturnType<typeof setNewUserNameAC>

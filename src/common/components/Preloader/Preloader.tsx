@@ -1,5 +1,5 @@
 import React from 'react'
-import photo from '../../images/spinner.svg'
+import photo from './spinner.svg'
 import style from './Preloader.module.css'
 
 const Preloader = () => {

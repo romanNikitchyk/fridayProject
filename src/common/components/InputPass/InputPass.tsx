@@ -32,6 +32,7 @@ export function InputPass(props: PropsType) {
     <div className={styles.wrapInput}>
       <Input type={hiddenText ? 'text' : 'password'} {...props} />
       <button
+        type={'button'}
         className={styles.button}
         onClick={onHiddenHandler}
         style={{

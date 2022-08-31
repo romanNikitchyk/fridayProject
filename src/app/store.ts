@@ -2,7 +2,7 @@ import { applyMiddleware, legacy_createStore } from 'redux'
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { rootReducer } from './rootReducer'
 import { RegisterActionsType } from '../features/auth/Register/registerReducer'
-import { ProfileActionsType } from '../features/profile/profileReducer'
+import { ProfileActionsType } from '../features/Profile/profileReducer'
 import { LoginActionsType } from '../features/auth/Login/loginReducer'
 import { AuthReducerActionsType } from '../features/auth/authReducer'
 import { PacksActionsType } from '../features/Packs/packsReducer'
@@ -24,3 +24,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   AppActionsType
 >
+
+// @ts-ignore
+window.state = store.getState()

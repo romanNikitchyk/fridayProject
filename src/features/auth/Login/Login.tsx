@@ -48,7 +48,7 @@ export function Login() {
   })
 
   if (isLoggedIn && isInit) {
-    return <Navigate to={'/profile'} />
+    return <Navigate to={'/Profile'} />
   }
   if (!isInit) {
     return <Preloader />

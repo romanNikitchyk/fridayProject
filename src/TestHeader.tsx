@@ -7,7 +7,7 @@ export function TestHeader() {
   const error = useAppSelector((state) => state.auth.error)
   const errorText = useAppSelector((state) => state.auth.errorText)
   const message = useAppSelector((state) => state.auth.message)
-  const messageText = useAppSelector((state) => state.auth.messegeText)
+  const messageText = useAppSelector((state) => state.auth.messageText)
   const liStyle = { padding: 10, fontSize: 20, fontWeight: 700 }
   const activeStyle = ({ isActive }: { isActive: boolean }) =>
     isActive
@@ -54,7 +54,7 @@ export function TestHeader() {
         </NavLink>
       </li>
       <li style={liStyle}>
-        <NavLink to={'/profile'} style={activeStyle}>
+        <NavLink to={'/Profile'} style={activeStyle}>
           Profile
         </NavLink>
       </li>
