@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import Input from '../../common/components/Input/Input'
 import { getPacksTC } from '../Packs/packsReducer'
 import { useAppDispatch } from '../../common/hook/hook'
@@ -6,9 +6,8 @@ import { useAppDispatch } from '../../common/hook/hook'
 const SettingsBar = () => {
   const dispatch = useAppDispatch()
   const [value, setValue] = useState<string>('')
-  const pressEnterKeyHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.charCode === 13) {
-      debugger
+  const pressEnterKeyHandler = () => {
+    if (value.trim() !== '') {
       dispatch(
         getPacksTC({
           packName: value,
@@ -27,9 +26,8 @@ const SettingsBar = () => {
       </div>
       <Input
         placeholder={'Provide your text and press Enter'}
-        value={value}
         onChange={onChangeHandler}
-        onKeyPress={pressEnterKeyHandler}
+        onEnter={pressEnterKeyHandler}
       />
     </div>
   )
