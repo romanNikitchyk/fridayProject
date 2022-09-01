@@ -34,7 +34,7 @@ export function Profile() {
 
   return (
     <div className={style.profile}>
-      <Link className={style.link} to={'404'}>
+      <Link className={style.link} to={'/Packs'}>
         Back to Packs List
       </Link>
       <div className={style.cardProfile}>

@@ -8,6 +8,7 @@ import { PageNotFound } from '../common/components/PageNotFound/PageNotFound'
 import { Test } from '../features/Test'
 import { CheckMail } from '../features/auth/ForgotPassword/CheckMail/CheckMail'
 import { SetNewPassword } from '../features/auth/ForgotPassword/SetNewPassword/SetNewPassword'
+import PackTable from '../features/Packs/PackTable/PackTable'
 
 export const RoutesPage = () => {
   return (
@@ -17,6 +18,7 @@ export const RoutesPage = () => {
       <Route path={'/login'} element={<Login />} />
       <Route path={'/register'} element={<Register />} />
       <Route path={'/Profile'} element={<Profile />} />
+      <Route path={'/Packs'} element={<PackTable />} />
 
       <Route path={'/recovery'} element={<ForgotPassword />} />
       <Route path={'/check-mail'} element={<CheckMail />} />

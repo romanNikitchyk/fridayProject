@@ -32,6 +32,7 @@ export const getPacksTC =
     dispatch(setAppIsInitAC(false))
     try {
       const res = await packsAPI.getPacks(params)
+      console.log(res)
       dispatch(setPacksAC(res.data))
     } catch (error) {
       console.log(error)
