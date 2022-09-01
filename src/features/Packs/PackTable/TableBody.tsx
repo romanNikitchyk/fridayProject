@@ -1,4 +1,5 @@
 import React from 'react'
+import stl from './PackTable.module.css'
 
 export type TableBodyProps = {
   packId: string
@@ -11,7 +12,7 @@ export type TableBodyProps = {
 
 const TableBody = (props: TableBodyProps) => {
   return (
-    <tr>
+    <tr className={stl.tableData}>
       <td>{props.name}</td>
       <td>{props.cards}</td>
       <td>{props.updated}</td>
