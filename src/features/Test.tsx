@@ -8,7 +8,6 @@ import Radio from '../common/components/Radio/Radio'
 import InputRange from '../common/components/InputRange/InputRange'
 import InputDoubleRange from '../common/components/InputDoubleRange/InputDoubleRange'
 import { InputPass } from '../common/components/InputPass/InputPass'
-import SettingsBar from './SearchInput/SettingsBar'
 
 export function Test() {
   const [value, setValue] = useState('')
@@ -101,9 +100,6 @@ export function Test() {
 
       <div>
         <InputPass placeholder={'Password'} value={value} onChangeText={setValue} />
-      </div>
-      <div>
-        <SettingsBar />
       </div>
     </div>
   )

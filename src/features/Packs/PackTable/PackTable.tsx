@@ -3,16 +3,21 @@ import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
 import { getPacksTC } from '../packsReducer'
 import TableBody from './TableBody'
 import stl from './PackTable.module.css'
+import { SettingsBar } from '../../SettingsBar/SettingsBar'
 
 const PackTable = () => {
   const dispatch = useAppDispatch()
   const cardPacks = useAppSelector((state) => state.packs.cardPacks)
-  const params = { pageCount: 10 }
+  const params = useAppSelector((state) => state.packs.params)
+
   useEffect(() => {
-    dispatch(getPacksTC(params))
-  }, [])
+    dispatch(getPacksTC())
+  }, [params])
   return (
     <div className={stl.wrapper}>
+      <div>
+        <SettingsBar />
+      </div>
       <table className={stl.allTable}>
         <thead className={stl.tableHead}>
           <tr>

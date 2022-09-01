@@ -16,6 +16,7 @@ export type PacksResponseType = {
   cardPacksTotalCount: number
   minCardsCount: number
   maxCardsCount: number
+  params: PacksParamsType
 }
 export type CardsPacksType = {
   _id: string
