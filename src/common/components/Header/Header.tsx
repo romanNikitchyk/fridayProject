@@ -5,6 +5,8 @@ import styles from './Header.module.css'
 import { useAppSelector } from '../../hook/hook'
 import Button from '../Button/Button'
 import { Link, useNavigate } from 'react-router-dom'
+import Error from '../ErrorOrMessage/Error'
+import Message from '../ErrorOrMessage/Message'
 
 export const Header = () => {
   const navigate = useNavigate()
@@ -12,6 +14,10 @@ export const Header = () => {
   const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const userAvatar = useAppSelector((state) => state.profile.avatar)
   const userName = useAppSelector((state) => state.profile.name)
+  const error = useAppSelector((state) => state.auth.error)
+  const errorText = useAppSelector((state) => state.auth.errorText)
+  const message = useAppSelector((state) => state.auth.message)
+  const messageText = useAppSelector((state) => state.auth.messageText)
 
   const onSignInClickHandler = () => {
     navigate('/login')
@@ -20,6 +26,8 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.row}>
+        {error && <Error text={errorText} />}
+        {message && <Message text={messageText} />}
         <div className={styles.logo}>
           <Link to={'/'} className={styles.logoLink}>
             <img src={logo} alt="logotype" />

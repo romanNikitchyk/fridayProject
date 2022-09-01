@@ -2,11 +2,9 @@ import { userAPI } from '../../api/api'
 import { loginApi, ResponseType } from '../auth/Login/loginApi'
 import { AppThunk } from '../../app/store'
 import { setAppIsInitAC, setErrorStatusAC, setMessageTextAC } from '../auth/authReducer'
+import { error } from 'console'
 
-export type ProfileActionsType =
-  | setProfileUserACType
-  | resetProfileUserDataACType
-  | setNewUserNameACType
+export type ProfileActionsType = setProfileUserType | resetProfileUserDataType | setNewUserNameType
 
 const initialState: ResponseType = {
   _id: '',
@@ -89,6 +87,6 @@ export const changeNameUserTC =
     }
   }
 
-export type setProfileUserACType = ReturnType<typeof setProfileUserAC>
-export type resetProfileUserDataACType = ReturnType<typeof resetProfileUserDataAC>
-export type setNewUserNameACType = ReturnType<typeof setNewUserNameAC>
+export type setProfileUserType = ReturnType<typeof setProfileUserAC>
+export type resetProfileUserDataType = ReturnType<typeof resetProfileUserDataAC>
+export type setNewUserNameType = ReturnType<typeof setNewUserNameAC>

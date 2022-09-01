@@ -32,7 +32,6 @@ export function TestHeader() {
     >
       {error && <Error text={errorText} />}
       {message && <Message text={messageText} />}
-      {}
       <li style={liStyle}>
         <NavLink to={'/login'} style={activeStyle}>
           Login
