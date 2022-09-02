@@ -7,7 +7,7 @@ type PropsType = {
   totalCount: number
   currentPage: number
   pageSize: number
-  changePageSize?: (option: string) => void
+  changePageSize?: (pageCount: string) => void
   optionsPageSize?: string[]
 }
 
@@ -40,10 +40,10 @@ export const Pagination: FC<PropsType> = ({
     onPageChanged(currentPage + 1)
   }
   const onLastChangedHandler = () => {
-    onPageChanged(lastPageIdx - 1)
+    onPageChanged(pageCount)
   }
 
-  const selectOptions = optionsPageSize ? optionsPageSize : ['5', `${pageSize}`, '15', '20']
+  const selectOptions = optionsPageSize ? optionsPageSize : [`${pageSize}`, '10', '15', '20']
 
   return (
     <div className={styles.pagination}>

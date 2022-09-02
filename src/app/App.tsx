@@ -3,6 +3,7 @@ import { initAppTC } from '../features/auth/authReducer'
 import { useAppDispatch } from '../common/hook/hook'
 import { RoutesPage } from './RoutesPage'
 import { Header } from '../common/components/Header/Header'
+import { TestHeader } from '../TestHeader'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -14,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/*<TestHeader />*/}
+      <TestHeader />
       <div className="container">
         <RoutesPage />
       </div>
