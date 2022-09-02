@@ -8,6 +8,7 @@ import Radio from '../common/components/Radio/Radio'
 import InputRange from '../common/components/InputRange/InputRange'
 import InputDoubleRange from '../common/components/InputDoubleRange/InputDoubleRange'
 import { InputPass } from '../common/components/InputPass/InputPass'
+import { Pagination } from '../common/components/Pagination/Pagination'
 
 export function Test() {
   const [value, setValue] = useState('')
@@ -36,13 +37,13 @@ export function Test() {
         <Button onClick={onClickHandler}>Test Button</Button>
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <Input value={value} onChangeText={setValue} placeholder={'Write text'} />
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <Checkbox checked={isChecked} onChangeChecked={setIsChecked}>
@@ -50,7 +51,7 @@ export function Test() {
         </Checkbox>
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <EditableSpan
@@ -60,26 +61,26 @@ export function Test() {
         />
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <Select options={options} onChangeOption={setOption} value={option} />
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <Radio options={options} onChangeOption={setOption} value={option} />
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <div>{value1}</div>
         <InputRange onChangeRange={setValue1} value={value1} />
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <div
@@ -96,11 +97,29 @@ export function Test() {
         <InputDoubleRange onChangeRange={onChangeRange2} value={[value1, value2]} />
       </div>
 
-      <hr />
+      <hr style={{ margin: '15px 0' }} />
 
       <div>
         <InputPass placeholder={'Password'} value={value} onChangeText={setValue} />
       </div>
+
+      <hr style={{ margin: '15px 0' }} />
+
+      <div>
+        <Pagination
+          totalCount={200}
+          onPageChanged={() => {
+            console.log('onPageChanged!')
+          }}
+          changePageSize={() => {
+            console.log('changePageSize')
+          }}
+          pageSize={10}
+          currentPage={20}
+        />
+      </div>
+
+      <hr style={{ margin: '15px 0' }} />
     </div>
   )
 }
