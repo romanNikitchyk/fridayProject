@@ -9,8 +9,8 @@ const PackTable = () => {
   const dispatch = useAppDispatch()
   const cardPacks = useAppSelector((state) => state.packs.cardPacks)
   const params = useAppSelector((state) => state.packs.params)
-
   useEffect(() => {
+    console.log(params)
     dispatch(getPacksTC())
   }, [params])
   return (

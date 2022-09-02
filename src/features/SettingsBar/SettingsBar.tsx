@@ -3,6 +3,7 @@ import SearchInput from './SearchInput/SearchInput'
 import MyAllFilterButtons from './MyAllFilterButtons/MyAllFilterButtons'
 import styles from './SettingsBar.module.css'
 import NumberOfCards from './NumberOfCards/NumberOfCards'
+import ResetFilters from './ResetFilters/ResetFilters'
 
 export const SettingsBar = () => {
   return (
@@ -10,6 +11,7 @@ export const SettingsBar = () => {
       <SearchInput />
       <MyAllFilterButtons />
       <NumberOfCards />
+      <ResetFilters />
     </div>
   )
 }

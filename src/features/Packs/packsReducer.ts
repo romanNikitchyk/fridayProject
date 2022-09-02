@@ -4,11 +4,11 @@ import { setAppIsInitAC } from '../auth/authReducer'
 
 const initialState: PacksResponseType = {
   cardPacks: [],
-  page: 1,
-  pageCount: 0,
-  cardPacksTotalCount: 0,
-  minCardsCount: 0,
-  maxCardsCount: 0,
+  page: 1, //pagination
+  pageCount: 0, //pagination
+  cardPacksTotalCount: 0, //
+  minCardsCount: 0, //pagination
+  maxCardsCount: 0, //pagination
   params: {},
 }
 

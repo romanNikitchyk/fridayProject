@@ -14,7 +14,6 @@ const SearchInput = () => {
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value)
   }
-  console.log(value)
   return (
     <div>
       <div>
