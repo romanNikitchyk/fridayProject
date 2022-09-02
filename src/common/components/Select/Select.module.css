@@ -43,11 +43,9 @@
 }
 
 .default:hover select {
-  border-color: #003299;
+  border-color: #366EFF;
 }
-.default:hover::after {
-  border-top-color: #003299;
-}
+
 
 .default select:disabled {
   color: #003299;

@@ -2,9 +2,10 @@
     cursor: pointer;
 
     box-sizing: border-box;
-    width: 24px;
+    min-width: 24px;
     height: 24px;
     margin-right: 12px;
+    padding: 2px 4px;
 
     font-family: inherit;
     font-size: 0.75em;
@@ -13,27 +14,49 @@
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
+    border-radius: 2px;
+
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.pagination button:hover {
+    color: white;
+
+    background-color: #366EFF;
 }
 
 .pagination button:disabled {
     opacity: 0.5;
 }
 
+
 .pagination .previousBtn {
     width: 6px;
+    min-width: auto;
     height: 9px;
     margin-right: 22px;
+    padding: 0;
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='9' viewBox='0 0 6 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 1L1 4.43182L5 7.93306' stroke='black'/%3E%3C/svg%3E ");
 
 }
 .pagination .nextBtn {
     width: 6px;
+    min-width: auto;
     height: 9px;
     margin: 0 0 0 22px;
-
+    padding: 0;
 
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='9' viewBox='0 0 6 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 7.93311L5 4.50129L1 1.00004' stroke='black'/%3E%3C/svg%3E ");
+}
+
+.pagination .previousBtn:hover {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='9' viewBox='0 0 6 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 1L1 4.43182L5 7.93306' stroke='%23366EFF'/%3E%3C/svg%3E ");
+}
+.pagination .nextBtn:hover {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='9' viewBox='0 0 6 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 7.93311L5 4.50129L1 1.00004' stroke='%23366EFF'/%3E%3C/svg%3E ");
 }
 
 .pagination .points {
@@ -42,15 +65,19 @@
     opacity: 1;
 }
 
+
+
 .pagination .lastPage {
     margin-right: 0;
 }
 
-.pagination .selectedPage {
+.pagination .selectedPage:disabled {
+    cursor: context-menu;
+
     color: #fff;
 
+    opacity: 1;
     background: #366EFF;
-    border-radius: 2px;
 }
 
 .pagination .pageCount {

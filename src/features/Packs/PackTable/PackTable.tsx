@@ -9,25 +9,28 @@ import { Pagination } from '../../../common/components/Pagination/Pagination'
 const PackTable = () => {
   const dispatch = useAppDispatch()
   const cardPacks = useAppSelector((state) => state.packs.cardPacks)
-  const params = useAppSelector((state) => state.packs.params)
   const page = useAppSelector((state) => state.packs.page) // Текущая страница
   const pageCount = useAppSelector((state) => state.packs.pageCount) // Колод на странице
   const cardPacksTotalCount = useAppSelector((state) => state.packs.cardPacksTotalCount) // количество колод
 
   useEffect(() => {
-    console.log(params)
-    dispatch(getPacksTC())
-  }, [params])
+    dispatch(getPacksTC({}))
+  }, [])
 
-  function onPageChanged(page: number) {
-    // dispatch - поменялась текущая страница
-    console.log('page', page)
+  const onPageChanged = (page: number) => {
+    dispatch(
+      getPacksTC({
+        page,
+      })
+    )
   }
 
   const changePageSize = (pageCount: string) => {
-    // dispatch // Выбрали другое количество колод на странице
-    // поменять pageCount на option
-    console.log('pageCount', pageCount)
+    dispatch(
+      getPacksTC({
+        pageCount: +pageCount,
+      })
+    )
   }
 
   return (
@@ -61,6 +64,7 @@ const PackTable = () => {
           })}
         </tbody>
       </table>
+
       <Pagination
         onPageChanged={onPageChanged}
         changePageSize={changePageSize}

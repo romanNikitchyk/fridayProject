@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import InputDoubleRange from '../../../common/components/InputDoubleRange/InputDoubleRange'
 import { useAppDispatch } from '../../../common/hook/hook'
-import { setParamsAC } from '../../Packs/packsReducer'
 import _debounce from 'lodash/debounce'
 
 const NumberOfCards = () => {
@@ -12,7 +11,7 @@ const NumberOfCards = () => {
 
   const debounceFn = useCallback(
     _debounce((min, max) => {
-      dispatch(setParamsAC({ max, min }))
+      // dispatch(setParamsAC({ max, min }))
     }, 500),
     []
   )

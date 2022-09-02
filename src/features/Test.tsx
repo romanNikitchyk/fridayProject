@@ -107,7 +107,7 @@ export function Test() {
 
       <div>
         <Pagination
-          totalCount={200}
+          totalCount={100}
           onPageChanged={() => {
             console.log('onPageChanged!')
           }}
@@ -115,7 +115,7 @@ export function Test() {
             console.log('changePageSize')
           }}
           pageSize={10}
-          currentPage={20}
+          currentPage={8}
         />
       </div>
 

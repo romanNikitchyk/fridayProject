@@ -16,7 +16,6 @@ export type PacksResponseType = {
   cardPacksTotalCount: number
   minCardsCount: number
   maxCardsCount: number
-  params: PacksParamsType
 }
 export type CardsPacksType = {
   _id: string
@@ -37,5 +36,7 @@ export type CardsPacksType = {
   __v: number
 }
 export const packsAPI = {
-  getPacks: (params: PacksParamsType) => instance.get<PacksResponseType>('cards/pack', { params }),
+  getPacks: (params: PacksParamsType) => {
+    return instance.get<PacksResponseType>('cards/pack', { params })
+  },
 }

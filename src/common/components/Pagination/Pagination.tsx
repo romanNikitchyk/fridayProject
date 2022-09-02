@@ -20,6 +20,7 @@ export const Pagination: FC<PropsType> = ({
 
   optionsPageSize,
 }) => {
+  let isEnd = false
   const pages: number[] = []
 
   const pageCount = Math.ceil(totalCount / pageSize)
@@ -28,8 +29,13 @@ export const Pagination: FC<PropsType> = ({
     pages.push(i)
   }
 
-  const firstPageIdx = currentPage - 3 < 1 ? 1 : currentPage - 2
+  let firstPageIdx = currentPage - 3 < 1 ? 1 : currentPage - 2
   const lastPageIdx = currentPage - 3 < 1 ? 5 : currentPage + 2
+
+  if (currentPage + 3 > pageCount) {
+    firstPageIdx = pageCount - 4
+    isEnd = true
+  }
 
   const slicedPages = pages.slice(firstPageIdx, lastPageIdx + 1)
 
@@ -56,23 +62,24 @@ export const Pagination: FC<PropsType> = ({
         const onPageChangedHandler = () => {
           onPageChanged(page)
         }
-
+        const isSelectedPage = page === currentPage
         return (
           <button
             key={i}
-            className={`${styles.defaultPage} ${page === currentPage ? styles.selectedPage : ''}`}
+            className={`${styles.defaultPage} ${isSelectedPage ? styles.selectedPage : ''}`}
             type={'button'}
+            disabled={isSelectedPage}
             onClick={onPageChangedHandler}
           >
             {page}
           </button>
         )
       })}
-      <button disabled className={styles.points}>
+      <button disabled className={styles.points} hidden={isEnd}>
         ...
       </button>
-      <button onClick={onLastChangedHandler} className={styles.lastPage}>
-        {pageCount}
+      <button onClick={onLastChangedHandler} className={styles.lastPage} hidden={isEnd}>
+        {pageCount ? pageCount : ''}
       </button>
       <button
         onClick={onNextChanged}
