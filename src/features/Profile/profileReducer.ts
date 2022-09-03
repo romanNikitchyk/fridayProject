@@ -1,7 +1,9 @@
 import { userAPI } from '../../api/api'
 import { loginApi, ResponseType } from '../auth/Login/loginApi'
 import { AppThunk } from '../../app/store'
-import { setAppIsInitAC, setErrorStatusAC, setMessageTextAC } from '../auth/authReducer'
+import { setAppIsInitAC, setMessageTextAC } from '../auth/authReducer'
+import { errorHandler } from '../../common/utils/errorHandler'
+import { AxiosError } from 'axios'
 
 export type ProfileActionsType = setProfileUserType | resetProfileUserDataType | setNewUserNameType
 
@@ -51,7 +53,6 @@ export const profileReducer = (
 
 export const setProfileUserAC = (userData: ResponseType) =>
   ({ type: 'PROFILE/SET-PROFILE-USER', userData } as const)
-
 const resetProfileUserDataAC = () => ({ type: 'PROFILE/RESET-PROFILE-USER-DATA' } as const)
 
 export const setNewUserNameAC = (updatedUser: ResponseType) =>
@@ -66,11 +67,8 @@ export const logOutTC = (): AppThunk => async (dispatch) => {
       dispatch(setMessageTextAC(false, ''))
     }, 6000)
     dispatch(resetProfileUserDataAC())
-  } catch (error: any) {
-    dispatch(setErrorStatusAC(true, error.response.data.error))
-    setTimeout(() => {
-      dispatch(setErrorStatusAC(false, ''))
-    }, 6000)
+  } catch (error) {
+    errorHandler(error as AxiosError | Error, dispatch)
   }
 }
 
@@ -83,7 +81,7 @@ export const changeNameUserTC =
       dispatch(setNewUserNameAC(data.updatedUser))
       dispatch(setAppIsInitAC(true))
     } catch (error) {
-      alert(error)
+      errorHandler(error as AxiosError | Error, dispatch)
     }
   }
 

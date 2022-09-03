@@ -2,6 +2,8 @@ import { AppThunk } from '../../app/store'
 import { setProfileUserAC } from '../Profile/profileReducer'
 import { setIsLoggedInAC } from './Login/loginReducer'
 import { authApi } from './authApi'
+import { errorHandler } from '../../common/utils/errorHandler'
+import { AxiosError } from 'axios'
 
 const initialState: InitialStateType = {
   isInitialized: false,
@@ -59,11 +61,8 @@ export const initAppTC = (): AppThunk => {
       let res = await authApi.me()
       dispatch(setIsLoggedInAC(true))
       dispatch(setProfileUserAC(res.data))
-    } catch (error: any) {
-      dispatch(setErrorStatusAC(true, error.response.data.error))
-      setTimeout(() => {
-        dispatch(setErrorStatusAC(false, ''))
-      }, 6000)
+    } catch (error) {
+      errorHandler(error as AxiosError | Error, dispatch)
     } finally {
       dispatch(setAppIsInitAC(true))
     }
