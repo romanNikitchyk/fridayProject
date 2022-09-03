@@ -1,7 +1,10 @@
 import { AppThunk } from '../../../app/store'
-import { setAppIsInitAC, setErrorStatusAC, setMessageTextAC } from '../authReducer'
+import { setAppIsInitAC } from '../authReducer'
 import { FormikDataType } from './ForgotPassword/ForgotPassword'
 import { forgotApi } from './forgotApi'
+import { errorHandler } from '../../../common/utils/errorHandler'
+import { AxiosError } from 'axios'
+import { messageHandler } from '../../../common/utils/messageHandler'
 
 export const forgotPasswordTC = (email: FormikDataType): AppThunk => {
   return async (dispatch) => {
@@ -18,15 +21,9 @@ link</a>
 </div>`, // хтмп-письмо, вместо $token$ бэк вставит токен
       }
       let res = await forgotApi.forgotPassword(data)
-      dispatch(setMessageTextAC(true, res.data.info))
-      setTimeout(() => {
-        dispatch(setMessageTextAC(false, ''))
-      }, 6000)
-    } catch (error: any) {
-      dispatch(setErrorStatusAC(true, error.response.data.error))
-      setTimeout(() => {
-        dispatch(setErrorStatusAC(false, ''))
-      }, 6000)
+      messageHandler(res.data.info, dispatch)
+    } catch (error) {
+      errorHandler(error as AxiosError | Error, dispatch)
     } finally {
       dispatch(setAppIsInitAC(true))
     }
@@ -38,15 +35,9 @@ export const newPasswordTC = (password: string, resetPasswordToken: string): App
       dispatch(setAppIsInitAC(false))
       let data = { password, resetPasswordToken }
       let res = await forgotApi.newPassword(data)
-      dispatch(setMessageTextAC(true, res.data.info))
-      setTimeout(() => {
-        dispatch(setMessageTextAC(false, ''))
-      }, 6000)
-    } catch (error: any) {
-      dispatch(setErrorStatusAC(true, error.response.data.error))
-      setTimeout(() => {
-        dispatch(setErrorStatusAC(false, ''))
-      }, 6000)
+      messageHandler(res.data.info, dispatch)
+    } catch (error) {
+      errorHandler(error as AxiosError | Error, dispatch)
     } finally {
       dispatch(setAppIsInitAC(true))
     }

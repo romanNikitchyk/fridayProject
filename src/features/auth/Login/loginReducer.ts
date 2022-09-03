@@ -1,7 +1,9 @@
 import { loginApi, LoginParamsType } from './loginApi'
 import { setProfileUserAC } from '../../Profile/profileReducer'
 import { AppThunk } from '../../../app/store'
-import { setAppIsInitAC, setErrorStatusAC } from '../authReducer'
+import { setAppIsInitAC } from '../authReducer'
+import { errorHandler } from '../../../common/utils/errorHandler'
+import { AxiosError } from 'axios'
 
 const initialState = {
   isLoggedIn: false,
@@ -32,11 +34,8 @@ export const loginTC =
       let res = await loginApi.login(data)
       dispatch(setIsLoggedInAC(true))
       dispatch(setProfileUserAC(res.data))
-    } catch (error: any) {
-      dispatch(setErrorStatusAC(true, error.response.data.error))
-      setTimeout(() => {
-        dispatch(setErrorStatusAC(false, ''))
-      }, 6000)
+    } catch (error) {
+      errorHandler(error as AxiosError | Error, dispatch)
     } finally {
       dispatch(setAppIsInitAC(true))
     }
