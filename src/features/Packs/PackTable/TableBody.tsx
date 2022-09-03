@@ -12,12 +12,12 @@ export type TableBodyProps = {
 
 const TableBody = (props: TableBodyProps) => {
   return (
-    <tr className={stl.tableData}>
-      <td>{props.name}</td>
-      <td>{props.cards}</td>
-      <td>{props.updated}</td>
-      <td>{props.created}</td>
-      <td>Actions</td>
+    <tr>
+      <td className={stl.tableName}>{props.name}</td>
+      <td className={stl.tableCards}>{props.cards}</td>
+      <td className={stl.tableUpd}>{props.updated}</td>
+      <td className={stl.tablecreated}>{props.created}</td>
+      <td className={stl.tableAction}>Actions</td>
     </tr>
   )
 }
