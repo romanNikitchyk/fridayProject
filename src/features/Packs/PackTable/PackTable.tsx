@@ -5,9 +5,13 @@ import TableBody from './TableBody'
 import stl from './PackTable.module.css'
 import { SettingsBar } from '../../SettingsBar/SettingsBar'
 import { Pagination } from '../../../common/components/Pagination/Pagination'
+import { Navigate } from 'react-router-dom'
+import Preloader from '../../../common/components/Preloader/Preloader'
 
 const PackTable = () => {
   const dispatch = useAppDispatch()
+  const isInit = useAppSelector((state) => state.auth.isInitialized)
+  const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const cardPacks = useAppSelector((state) => state.packs.cardPacks)
   const page = useAppSelector((state) => state.packs.page) // Текущая страница
   const pageCount = useAppSelector((state) => state.packs.pageCount) // Колод на странице
@@ -31,6 +35,12 @@ const PackTable = () => {
         pageCount: +pageCount,
       })
     )
+  }
+  if (!isLoggedIn) {
+    return <Navigate to={'/'} />
+  }
+  if (!isInit) {
+    return <Preloader />
   }
 
   return (

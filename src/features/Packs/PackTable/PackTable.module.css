@@ -20,8 +20,52 @@
 
     background-color: #EFEFEF;
 }
-.tableData {
+.allTable {
     height: 48px;
 
     border:  1px solid #D9D9D9;
 }
+.tableName {
+    overflow: hidden;
+
+    width: 400px;
+    max-width: 400px;
+    height: 48px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tableCards {
+    overflow: hidden;
+
+    min-width: 100px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tableUpd {
+    overflow: hidden;
+
+    min-width: 300px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tablecreated {
+    overflow: hidden;
+
+    min-width: 100px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tableAction {
+    overflow: hidden;
+
+    min-width: 100px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+

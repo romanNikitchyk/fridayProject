@@ -1,6 +1,6 @@
 import { packsAPI, PacksParamsType, PacksResponseType } from './packsApi'
 import { AppThunk } from '../../app/store'
-import { setAppIsInitAC } from '../auth/authReducer'
+import { setAppIsInitAC, setErrorStatusAC } from '../auth/authReducer'
 
 const initialState: PacksResponseType = {
   cardPacks: [],
@@ -34,8 +34,14 @@ export const getPacksTC =
     try {
       const res = await packsAPI.getPacks(params)
       dispatch(setPacksAC(res.data))
-    } catch (error) {
-      alert(error)
+    } catch (error: any) {
+      debugger
+      dispatch(
+        setErrorStatusAC(true, error.response.data ? error.response.data.error : error.message)
+      )
+      setTimeout(() => {
+        dispatch(setErrorStatusAC(false, ''))
+      }, 6000)
     } finally {
       dispatch(setAppIsInitAC(true))
     }
