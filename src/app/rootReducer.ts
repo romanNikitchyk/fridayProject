@@ -4,6 +4,7 @@ import { registerReducer } from '../features/auth/Register/registerReducer'
 import { loginReducer } from '../features/auth/Login/loginReducer'
 import { authReducer } from '../features/auth/authReducer'
 import { packsReducer } from '../features/Packs/packsReducer'
+import { cardsReducer } from '../features/Cards/cardsReducer'
 
 export const rootReducer = combineReducers({
   register: registerReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
   profile: profileReducer,
   auth: authReducer,
   packs: packsReducer,
+  cards: cardsReducer,
 })
