@@ -6,6 +6,7 @@ import { ProfileActionsType } from '../features/Profile/profileReducer'
 import { LoginActionsType } from '../features/auth/Login/loginReducer'
 import { AuthReducerActionsType } from '../features/auth/authReducer'
 import { PacksActionsType } from '../features/Packs/packsReducer'
+import { CardsActionsType } from '../features/Cards/cardsReducer'
 
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk))
 
@@ -16,6 +17,7 @@ export type AppActionsType =
   | LoginActionsType
   | AuthReducerActionsType
   | PacksActionsType
+  | CardsActionsType
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = ThunkDispatch<RootState, unknown, AppActionsType>
 export type AppThunk<ReturnType = void> = ThunkAction<
