@@ -2,7 +2,6 @@ import { userAPI } from '../../api/api'
 import { loginApi, ResponseType } from '../auth/Login/loginApi'
 import { AppThunk } from '../../app/store'
 import { setAppIsInitAC, setErrorStatusAC, setMessageTextAC } from '../auth/authReducer'
-import { error } from 'console'
 
 export type ProfileActionsType = setProfileUserType | resetProfileUserDataType | setNewUserNameType
 
@@ -27,7 +26,7 @@ export const profileReducer = (
 ): ProfileStateType => {
   switch (action.type) {
     case 'PROFILE/SET-PROFILE-USER':
-      return action.userData
+      return { ...state, ...action.userData }
     case 'PROFILE/RESET-PROFILE-USER-DATA':
       return {
         _id: '',
@@ -52,6 +51,7 @@ export const profileReducer = (
 
 export const setProfileUserAC = (userData: ResponseType) =>
   ({ type: 'PROFILE/SET-PROFILE-USER', userData } as const)
+
 const resetProfileUserDataAC = () => ({ type: 'PROFILE/RESET-PROFILE-USER-DATA' } as const)
 
 export const setNewUserNameAC = (updatedUser: ResponseType) =>

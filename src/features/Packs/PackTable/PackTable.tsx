@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
-import { getPacksTC } from '../packsReducer'
+import { getPacksTC, setPacksAC } from '../packsReducer'
 import TableBody from './TableBody'
 import stl from './PackTable.module.css'
 import { SettingsBar } from '../../SettingsBar/SettingsBar'
@@ -12,25 +12,20 @@ const PackTable = () => {
   const page = useAppSelector((state) => state.packs.page) // Текущая страница
   const pageCount = useAppSelector((state) => state.packs.pageCount) // Колод на странице
   const cardPacksTotalCount = useAppSelector((state) => state.packs.cardPacksTotalCount) // количество колод
+  const userId = useAppSelector((state) => state.profile._id) // количество колод
 
   useEffect(() => {
-    dispatch(getPacksTC({}))
-  }, [])
+    dispatch(getPacksTC())
+  }, [userId])
 
   const onPageChanged = (page: number) => {
-    dispatch(
-      getPacksTC({
-        page,
-      })
-    )
+    dispatch(setPacksAC({ page }))
+    dispatch(getPacksTC())
   }
 
   const changePageSize = (pageCount: string) => {
-    dispatch(
-      getPacksTC({
-        pageCount: +pageCount,
-      })
-    )
+    dispatch(setPacksAC({ pageCount: +pageCount }))
+    dispatch(getPacksTC())
   }
 
   return (
