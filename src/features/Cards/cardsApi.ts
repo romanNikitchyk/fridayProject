@@ -15,9 +15,16 @@ export type CardsResponseType = {
   cardsTotalCount: number
   maxGrade: number
   minGrade: number
+  packCreated: string
+  packDeckCover: number | null
+  packName: string
+  packPrivate: boolean
+  packUpdated: string
+  packUserId: string
   page: number
   pageCount: number
-  packUserId: string
+  token: string
+  tokenDeathTime: number
 }
 export type CardsType = {
   answer: string

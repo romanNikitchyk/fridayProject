@@ -7,11 +7,18 @@ import { errorHandler } from '../../common/utils/errorHandler'
 const initialState: CardsResponseType = {
   cards: [],
   cardsTotalCount: 0,
-  maxGrade: 0,
+  maxGrade: 6,
   minGrade: 0,
+  packCreated: '',
+  packDeckCover: null,
+  packName: '',
+  packPrivate: false,
+  packUpdated: '',
+  packUserId: '',
   page: 1,
-  pageCount: 4,
-  packUserId: 'id',
+  pageCount: 1,
+  token: '',
+  tokenDeathTime: 1662998732870,
 }
 
 export const cardsReducer = (
@@ -36,7 +43,6 @@ export const getCardsTC =
     dispatch(setAppIsInitAC(false))
     try {
       const res = await cardsAPI.getCards(params)
-      console.log(res)
       dispatch(getCardsAC(res.data))
     } catch (error) {
       errorHandler(error as AxiosError | Error, dispatch)
