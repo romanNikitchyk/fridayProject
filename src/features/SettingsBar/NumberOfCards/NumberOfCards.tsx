@@ -1,29 +1,24 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useState } from 'react'
 import InputDoubleRange from '../../../common/components/InputDoubleRange/InputDoubleRange'
-import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
+import { useAppDispatch } from '../../../common/hook/hook'
 import _debounce from 'lodash/debounce'
-import { getPacksTC, setPacksAC } from '../../Packs/packsReducer'
 
 const NumberOfCards = () => {
   const dispatch = useAppDispatch()
-  const minCardsCount = useAppSelector((state) => state.packs.minCardsCount)
-  const maxCardsCount = useAppSelector((state) => state.packs.maxCardsCount)
-  const min = useAppSelector((state) => state.packs.min)
-  const max = useAppSelector((state) => state.packs.max)
 
-  useEffect(() => {
-    dispatch(setPacksAC({ min: minCardsCount, max: maxCardsCount }))
-  }, [minCardsCount, maxCardsCount])
+  const [minValue, setMinValue] = useState(0)
+  const [maxValue, setMaxValue] = useState(100)
 
   const debounceFn = useCallback(
-    _debounce((min: number, max: number) => {
-      dispatch(setPacksAC({ min, max }))
-      dispatch(getPacksTC())
+    _debounce((min, max) => {
+      // dispatch(setParamsAC({ max, min }))
     }, 500),
     []
   )
 
-  const onChangeRange = ([min, max]: [number, number]) => {
+  const onChangeRange2 = ([min, max]: [number, number]) => {
+    setMinValue(min)
+    setMaxValue(max)
     debounceFn(min, max)
   }
 
@@ -36,15 +31,10 @@ const NumberOfCards = () => {
           width: 340,
         }}
       >
-        <span>{min}</span>
-        <span>{max}</span>
+        <span>{minValue}</span>
+        <span>{maxValue}</span>
       </div>
-      <InputDoubleRange
-        onChangeRange={onChangeRange}
-        value={[min, max]}
-        max={maxCardsCount}
-        min={minCardsCount}
-      />
+      <InputDoubleRange onChangeRange={onChangeRange2} value={[minValue, maxValue]} />
     </div>
   )
 }

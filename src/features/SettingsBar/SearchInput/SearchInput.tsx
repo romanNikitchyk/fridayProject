@@ -1,21 +1,13 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import Input from '../../../common/components/Input/Input'
-import { useAppDispatch, useAppSelector } from '../../../common/hook/hook'
-import { getPacksTC, setPacksAC } from '../../Packs/packsReducer'
+import { useAppDispatch } from '../../../common/hook/hook'
 
 const SearchInput = () => {
-  const packName = useAppSelector((state) => state.packs.packName)
   const dispatch = useAppDispatch()
-
-  const [value, setValue] = useState<string>(packName)
-
-  useEffect(() => {
-    setValue(packName)
-  }, [packName])
+  const [value, setValue] = useState<string>('')
   const pressEnterKeyHandler = () => {
     if (value.trim() !== '') {
-      dispatch(setPacksAC({ packName: value }))
-      dispatch(getPacksTC())
+      // dispatch(setParamsAC({ packName: value }))
     }
   }
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,8 +19,7 @@ const SearchInput = () => {
         <span>Search</span>
       </div>
       <Input
-        placeholder={'Type and press Enter'}
-        value={value}
+        placeholder={'Provide your text and press Enter'}
         onChange={onChangeHandler}
         onEnter={pressEnterKeyHandler}
       />

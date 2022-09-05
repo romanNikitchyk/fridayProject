@@ -57,7 +57,7 @@ export const Pagination: FC<PropsType> = ({
     onPageChanged(1)
   }
 
-  const selectOptions = optionsPageSize ? optionsPageSize : [`5`, '10', '15', '20']
+  const selectOptions = optionsPageSize ? optionsPageSize : [`${pageSize}`, '10', '15', '20']
 
   return (
     <div className={styles.pagination}>

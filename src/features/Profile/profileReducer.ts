@@ -28,7 +28,7 @@ export const profileReducer = (
 ): ProfileStateType => {
   switch (action.type) {
     case 'PROFILE/SET-PROFILE-USER':
-      return { ...state, ...action.userData }
+      return action.userData
     case 'PROFILE/RESET-PROFILE-USER-DATA':
       return {
         _id: '',
