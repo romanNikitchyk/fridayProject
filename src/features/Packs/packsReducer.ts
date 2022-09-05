@@ -1,6 +1,8 @@
 import { packsAPI, PacksParamsType, StateType } from './packsApi'
 import { AppThunk } from '../../app/store'
 import { setAppIsInitAC } from '../auth/authReducer'
+import { errorHandler } from '../../common/utils/errorHandler'
+import { AxiosError } from 'axios'
 
 const initialState: StateType = {
   cardPacks: [],
@@ -50,22 +52,11 @@ export const getPacksTC = (): AppThunk => async (dispatch, getState) => {
 
     dispatch(setPacksAC(res.data))
   } catch (error) {
-    alert(error)
+    errorHandler(error as AxiosError | Error, dispatch)
+  } finally {
+    dispatch(setAppIsInitAC(true))
   }
 }
-export const getPacksTC =
-  (params: PacksParamsType): AppThunk =>
-  async (dispatch) => {
-    dispatch(setAppIsInitAC(false))
-    try {
-      const res = await packsAPI.getPacks(params)
-      dispatch(setPacksAC(res.data))
-    } catch (error) {
-      errorHandler(error as AxiosError | Error, dispatch)
-    } finally {
-      dispatch(setAppIsInitAC(true))
-    }
-  }
 
 //TYPES
 export type PacksActionsType = SetPacksAC

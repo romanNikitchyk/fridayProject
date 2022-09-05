@@ -9,6 +9,19 @@ export type PacksParamsType = {
   pageCount?: number
   user_id?: string
 }
+export type StateType = {
+  cardPacks: CardsPacksType[]
+  page: number
+  pageCount: number
+  cardPacksTotalCount: number
+  packName: string
+  user_id: string
+  valueOfSearchInput: string
+  maxCardsCount: number
+  minCardsCount: number
+  min: number
+  max: number
+}
 export type PacksResponseType = {
   cardPacks: CardsPacksType[]
   page: number
