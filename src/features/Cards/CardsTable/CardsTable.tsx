@@ -13,8 +13,8 @@ const CardsTable = () => {
   const isInit = useAppSelector((state) => state.auth.isInitialized)
   const isLoggedIn = useAppSelector((state) => state.login.isLoggedIn)
   const cards = useAppSelector((state) => state.cards.cards)
-  const cardsPack_id = useAppSelector((state) => state.cards.cards[0].cardsPack_id)
-  const page = useAppSelector((state) => state.cards.pageCount) // Текущая страница
+  const cardsPack_id = cards[0]?.cardsPack_id
+  const page = useAppSelector((state) => state.cards.page) // Текущая страница
   const pageCount = useAppSelector((state) => state.cards.pageCount) // Колод на странице
   const cardsTotalCount = useAppSelector((state) => state.cards.cardsTotalCount) // количество колод
 
@@ -23,7 +23,6 @@ const CardsTable = () => {
   }
 
   const changePageSize = (pageCount: string) => {
-    debugger
     dispatch(getCardsTC({ cardsPack_id, pageCount: +pageCount }))
   }
   if (!isLoggedIn) {
