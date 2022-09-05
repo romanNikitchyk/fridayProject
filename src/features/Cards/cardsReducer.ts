@@ -7,7 +7,7 @@ import { errorHandler } from '../../common/utils/errorHandler'
 const initialState: CardsResponseType = {
   cards: [],
   cardsTotalCount: 0,
-  maxGrade: 6,
+  maxGrade: 0,
   minGrade: 0,
   packCreated: '',
   packDeckCover: null,
@@ -15,8 +15,8 @@ const initialState: CardsResponseType = {
   packPrivate: false,
   packUpdated: '',
   packUserId: '',
-  page: 1,
-  pageCount: 1,
+  page: 0,
+  pageCount: 0,
   token: '',
   tokenDeathTime: 1662998732870,
 }
