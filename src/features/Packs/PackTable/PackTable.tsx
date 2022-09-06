@@ -5,6 +5,8 @@ import TableBody from './TableBody'
 import stl from './PackTable.module.css'
 import { SettingsBar } from '../../SettingsBar/SettingsBar'
 import { Pagination } from '../../../common/components/Pagination/Pagination'
+import Button from '../../../common/components/Button/Button'
+import { useNavigate } from 'react-router-dom'
 
 const PackTable = () => {
   const dispatch = useAppDispatch()
@@ -12,8 +14,8 @@ const PackTable = () => {
   const page = useAppSelector((state) => state.packs.page) // Текущая страница
   const pageCount = useAppSelector((state) => state.packs.pageCount) // Колод на странице
   const cardPacksTotalCount = useAppSelector((state) => state.packs.cardPacksTotalCount) // количество колод
-  const userId = useAppSelector((state) => state.profile._id) // количество колод
-
+  const userId = useAppSelector((state) => state.profile._id) // userID
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getPacksTC())
   }, [userId])
@@ -27,9 +29,13 @@ const PackTable = () => {
     dispatch(setPacksAC({ pageCount: +pageCount }))
     dispatch(getPacksTC())
   }
+  const addNewPackHandler = () => {
+    navigate('/newPack') // добавить правильный url для перехода
+  }
 
   return (
     <div className={stl.wrapper}>
+      <Button onClick={addNewPackHandler}>Add new pack</Button>
       <div>
         <SettingsBar />
       </div>

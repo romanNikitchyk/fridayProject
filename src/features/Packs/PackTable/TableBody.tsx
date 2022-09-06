@@ -1,5 +1,6 @@
 import React from 'react'
 import stl from './PackTable.module.css'
+import ActionWithDecks from '../../ActionsWithDecks/ActionWithDecks'
 
 export type TableBodyProps = {
   packId: string
@@ -17,7 +18,9 @@ const TableBody = (props: TableBodyProps) => {
       <td>{props.cards}</td>
       <td>{props.updated}</td>
       <td>{props.created}</td>
-      <td>Actions</td>
+      <td>
+        <ActionWithDecks packUserId={props.packUserId} />
+      </td>
     </tr>
   )
 }

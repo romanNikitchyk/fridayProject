@@ -18,7 +18,7 @@ type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, H
 
 type PropsType = Omit<DefaultInputPropsType, 'type' | 'placeholder'> & {
   onChangeText?: (value: string) => void
-  onClickButton?: () => void
+  onClickButton?: (currentValue: string) => void
   onEnter?: () => void
   error?: boolean
   errorText?: string
@@ -41,9 +41,17 @@ const EditableSpan: FC<PropsType> = ({
   const [editMode, setEditMode] = useState(false)
   const { children, onDoubleClick, className, ...restSpanProps } = spanProps || {}
 
+  const [text, setText] = useState(restProps.value)
+
+  const changeText = (e: any) => {
+    setText(e.currentTarget.value)
+  }
+
   const onBlurHandler = (e: FocusEvent<HTMLInputElement>) => {
     setEditMode(false)
     onBlur && onBlur(e)
+    //@ts-ignore
+    onClickButton && onClickButton(text) // maked some changes
   }
 
   const onEnterHandler = () => {
@@ -55,10 +63,11 @@ const EditableSpan: FC<PropsType> = ({
     setEditMode(true)
     onDoubleClick && onDoubleClick(e)
   }
-
+  //dont work corectly
   const onClickButtonHandler = () => {
     setEditMode(false)
-    onClickButton && onClickButton()
+    //@ts-ignore
+    onClickButton && onClickButton(text)
   }
 
   const spanClassName = `${s.default} ${className}`
@@ -68,10 +77,18 @@ const EditableSpan: FC<PropsType> = ({
     <div className={totalWrapClassName}>
       {editMode ? (
         <div className={s.wrap}>
-          <Input autoFocus onBlur={onBlurHandler} onEnter={onEnterHandler} {...restProps} />
+          <Input
+            autoFocus
+            onBlur={onBlurHandler}
+            onChange={changeText}
+            onEnter={onEnterHandler}
+            value={text}
+            {...restProps}
+          />
           <button onClick={onClickButtonHandler} className={s.saveBtn}>
             SAVE
           </button>
+          <button onClick={() => console.log('test')}>test</button>
         </div>
       ) : (
         <span onDoubleClick={onDoubleClickHandler} className={spanClassName} {...restSpanProps}>

@@ -1,7 +1,7 @@
 import { userAPI } from '../../api/api'
 import { loginApi, ResponseType } from '../auth/Login/loginApi'
 import { AppThunk } from '../../app/store'
-import { setAppIsInitAC, setErrorStatusAC, setMessageTextAC } from '../auth/authReducer'
+import { setErrorStatusAC, setMessageTextAC } from '../auth/authReducer'
 
 export type ProfileActionsType = setProfileUserType | resetProfileUserDataType | setNewUserNameType
 
@@ -78,10 +78,10 @@ export const changeNameUserTC =
   (newName: string): AppThunk =>
   async (dispatch) => {
     try {
-      dispatch(setAppIsInitAC(false))
+      // dispatch(setAppIsInitAC(false))
       const { data } = await userAPI.changeNameUser(newName)
       dispatch(setNewUserNameAC(data.updatedUser))
-      dispatch(setAppIsInitAC(true))
+      // dispatch(setAppIsInitAC(true))
     } catch (error) {
       alert(error)
     }

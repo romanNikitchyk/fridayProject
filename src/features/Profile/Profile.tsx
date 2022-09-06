@@ -32,6 +32,10 @@ export function Profile() {
     console.log('changePhotoHandler')
   }
 
+  const changeNameProfile = (currentValue: string) => {
+    dispatch(changeNameUserTC(currentValue))
+  }
+
   return (
     <div className={style.profile}>
       <Link className={style.link} to={'/Packs'}>
@@ -47,9 +51,7 @@ export function Profile() {
           <EditableSpan
             wrapClassName={style.editableSpan}
             value={currentValue}
-            onClickButton={() => {
-              changeNameUserTC(currentValue)
-            }}
+            onClickButton={changeNameProfile}
             onChangeText={setCurrentValue}
           />
           <div className={style.email}>{userEmail}</div>
