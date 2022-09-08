@@ -9,6 +9,7 @@ import InputRange from '../common/components/InputRange/InputRange'
 import InputDoubleRange from '../common/components/InputDoubleRange/InputDoubleRange'
 import { InputPass } from '../common/components/InputPass/InputPass'
 import { Pagination } from '../common/components/Pagination/Pagination'
+import { Rating } from '../common/components/Rating/Rating'
 
 export function Test() {
   const [value, setValue] = useState('')
@@ -120,6 +121,28 @@ export function Test() {
       </div>
 
       <hr style={{ margin: '15px 0' }} />
+
+      <div>
+        <Rating value={3.1} />
+        <br />
+        <Rating value={3.2} />
+        <br />
+        <Rating value={3.3} />
+        <br />
+        <Rating value={3.4} />
+        <br />
+        <Rating value={3.5} />
+        <br />
+        <Rating value={3.6} />
+        <br />
+        <Rating value={3.7} />
+        <br />
+        <Rating value={3.8} />
+        <br />
+        <Rating value={3.9} />
+        <br />
+        <Rating value={4} />
+      </div>
     </div>
   )
 }
