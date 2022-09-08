@@ -1,26 +1,28 @@
 .rateWrap {
     display: inline-block;
 }
-.starWrap {
 
-}
 .star {
     cursor: pointer;
 
     box-sizing: content-box;
     padding-right: 6px;
 
-    fill: #DADADA;
+    fill: #dadada;
 }
+
+
 .star:last-child {
     padding-right: 0;
 }
 
 .star.active{
-    fill: #FFC700;
+    fill: #ffc700;
 }
 
 .star.hover{
-    fill: #FFC700;
+    fill: #ff9c00;
+
+    transition: all 0.3s ease-in-out 0s;
 }
 
