@@ -43,6 +43,7 @@ export const getCardsTC =
     dispatch(setAppIsInitAC(false))
     try {
       const res = await cardsAPI.getCards(params)
+      console.log(res)
       dispatch(getCardsAC(res.data))
     } catch (error) {
       errorHandler(error as AxiosError | Error, dispatch)

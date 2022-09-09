@@ -32,6 +32,7 @@ export const loginTC =
     try {
       dispatch(setAppIsInitAC(false))
       let res = await loginApi.login(data)
+      console.log(res)
       dispatch(setIsLoggedInAC(true))
       dispatch(setProfileUserAC(res.data))
     } catch (error) {

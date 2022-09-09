@@ -19,7 +19,7 @@ const PackTable = () => {
 
   useEffect(() => {
     dispatch(getPacksTC())
-  }, [userId])
+  }, [])
 
   const onPageChanged = (page: number) => {
     dispatch(setPacksAC({ page }))
