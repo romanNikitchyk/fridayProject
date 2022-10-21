@@ -62,7 +62,7 @@ export function Register() {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <h2>Sign Up</h2>
+        <h2>Sign Up!</h2>
         <div>
           <Input type={'email'} placeholder={'Email'} {...formik.getFieldProps('email')} />
           {formik.touched.email && formik.errors.email && (

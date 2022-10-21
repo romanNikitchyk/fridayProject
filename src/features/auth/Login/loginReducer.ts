@@ -1,6 +1,6 @@
 import { loginApi, LoginParamsType } from './loginApi'
 import { setProfileUserAC } from '../../Profile/profileReducer'
-import { AppThunk } from '../../../app/store'
+import { AppDispatch, AppThunk } from '../../../app/store'
 import { setAppIsInitAC } from '../authReducer'
 import { errorHandler } from '../../../common/utils/errorHandler'
 import { AxiosError } from 'axios'
@@ -28,7 +28,7 @@ export const setIsLoggedInAC = (value: boolean) =>
 // thunks
 export const loginTC =
   (data: LoginParamsType): AppThunk =>
-  async (dispatch) => {
+  async (dispatch: AppDispatch) => {
     try {
       dispatch(setAppIsInitAC(false))
       let res = await loginApi.login(data)
